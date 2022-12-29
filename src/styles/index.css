@@ -62,14 +62,13 @@
     @apply antialiased text-primary/90 bg-contrast border-primary/10;
     background: linear-gradient(
       180deg,
-      #f9ffee 100%,
+      #f9ffee 0%,
       #d9f6ff 24.48%,
       #d9f6ff 41.67%,
       #ffffff 48.44%,
       #ffffff 62.5%,
       #f9ffee 78.65%
     );
-    height: 100vh;
   }
 
   html {
