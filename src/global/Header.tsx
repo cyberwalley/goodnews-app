@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
-import {Link, NavLink} from 'react-router-dom';
-import {Dialog} from '@headlessui/react';
-import {Bars3Icon, XMarkIcon} from '@heroicons/react/24/outline';
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { Dialog } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 interface HeaderProps {
   children?: React.ReactNode;
 }
 
-const Header: React.FC<HeaderProps> = ({children}) => {
+const Header: React.FC<HeaderProps> = ({ children }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const isActiveLink = (isActive: boolean) =>
@@ -89,7 +89,7 @@ const Header: React.FC<HeaderProps> = ({children}) => {
               <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
                 {MenuItems.map(item => (
                   <NavLink
-                    className={({isActive}) => isActiveLink(isActive)}
+                    className={({ isActive }) => isActiveLink(isActive)}
                     key={item.id}
                     to={item.to}
                     target={item.target}
@@ -99,22 +99,22 @@ const Header: React.FC<HeaderProps> = ({children}) => {
                 ))}
               </div>
               <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
-                <a
-                  href="#"
+                <Link
+                  to="/about"
                   className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20"
                 >
                   Log in
-                </a>
+                </Link>
               </div>
             </nav>
             <Dialog as="div" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
               <Dialog.Panel className="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden">
                 <div className="flex h-9 items-center justify-between">
                   <div className="flex">
-                    <a href="#" className="-m-1.5 p-1.5">
+                    <Link to="/about" className="-m-1.5 p-1.5">
                       <span className="sr-only">{SITE_NAME}</span>
                       <img className="h-8" src={SITE_LOGO} alt={SITE_NAME} />
-                    </a>
+                    </Link>
                   </div>
                   <div className="flex">
                     <button
@@ -142,7 +142,7 @@ const Header: React.FC<HeaderProps> = ({children}) => {
                       <nav>
                         {MenuItems.map(item => (
                           <NavLink
-                            className={({isActive}) =>
+                            className={({ isActive }) =>
                               isActiveLink(isActive) +
                               '-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10'
                             }
@@ -156,12 +156,12 @@ const Header: React.FC<HeaderProps> = ({children}) => {
                       </nav>
                     </div>
                     <div className="py-6">
-                      <a
-                        href="#"
+                      <Link
+                        to="/"
                         className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
                       >
                         Log in
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
