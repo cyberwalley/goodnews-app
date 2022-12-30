@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '../elements/Button';
-import Tag from '../elements/Tag';
 
 interface MediaCardProps {
   title: string;
