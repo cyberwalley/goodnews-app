@@ -5,7 +5,7 @@ import Button from '../elements/Button';
 //import {Bars3Icon, XMarkIcon} from '@heroicons/react/24/outline';
 
 const Hero = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  //const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="isolate mb-10">
