@@ -7,6 +7,8 @@ interface MediaCardProps {
   description: string;
   image?: string;
   tags?: string[];
+  categories?: string[];
+  publishedDate?: string;
 }
 
 const MediaCard: React.FC<MediaCardProps> = ({
@@ -14,24 +16,33 @@ const MediaCard: React.FC<MediaCardProps> = ({
   image,
   description,
   tags,
+  categories,
+  publishedDate,
 }) => {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full mx-auto max-w-full bg-white px-8 py-6 border-black border-2 shadow-3xl mb-10">
-      <img
-        className="w-full mb-[20px]"
-        srcSet={image}
-        alt={title}
-        loading="lazy"
-      />
+      <div className="mb-[10px] aspect-w-3 aspect-h-2 overflow-hidden">
+        <img
+          className="w-full max-h-[300px] object-cover object-center"
+          src={image}
+          alt={title}
+          loading="lazy"
+          width="320"
+          height="240"
+        />
+      </div>
       <div className="flex flex-col justify-center w-full h-full p-4">
+        <div className="flex flex-wrap gap-2 mb-1 text-green-900 font-bold">
+          {categories?.map((category, index) => (
+            <div key={index}>{category}</div>
+          ))}
+        </div>
         <h2 className="text-2xl font-bold text-black mb-4 text-left">
           {title}
         </h2>
-        <p className="text-sm text-black mb-6 text-left">{description}</p>
-        <div className="flex flex-wrap gap-2 mb-6">
-          {tags?.map(tag => (
-            <Tag>{tag}</Tag>
-          ))}
+        <p className="text-sm text-black mb-4 text-left">{description}</p>
+        <div className="flex flex-wrap gap-2 mb-6 text-gray-600 text-xs">
+          {publishedDate}
         </div>
         <Button onClick={() => console.log('read more')}> Read more... </Button>
       </div>
