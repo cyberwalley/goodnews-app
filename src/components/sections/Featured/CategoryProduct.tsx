@@ -24,7 +24,7 @@ const CategoryProduct: React.FC<CategoryProductProps> = ({
       <div className="grid gap-2 snap-start border-black border-[1px] w-72 px-4 py-3 bg-white min-h-[31rem]">
         <div className="card-image aspect-[4/5] bg-primary/5">
           {label && (
-            <label className="max-w-prose whitespace-pre-wrap text-fine subpixel-antialiased absolute top-0 right-0 m-4 text-right z-10 border-[1px] px-1 py-1 rounded bg-green-300 text-green-900 ">
+            <label className="max-w-prose whitespace-pre-wrap text-fine subpixel-antialiased absolute top-0 right-0 m-4 text-right z-10 border-[1px] px-2 py-1 rounded bg-lime-400 text-black ">
               {'20% off'}
             </label>
           )}
