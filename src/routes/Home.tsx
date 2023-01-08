@@ -157,6 +157,50 @@ const Home = () => {
       productImage:
         'https://m.media-amazon.com/images/I/61uZ4l7QVJL._AC._SR360,460.jpg',
     },
+    {
+      id: 6,
+      categoryTitle: 'Electronics',
+      productTitle: 'Product 3',
+      price: 300,
+      seller: 'Seller 3',
+      publishedDate: '2021-09-03',
+      label: '',
+      productImage:
+        'https://m.media-amazon.com/images/I/61uZ4l7QVJL._AC._SR360,460.jpg',
+    },
+    {
+      id: 7,
+      categoryTitle: 'Electronics',
+      productTitle: 'Product 3',
+      price: 300,
+      seller: 'Seller 3',
+      publishedDate: '2021-09-03',
+      label: '',
+      productImage:
+        'https://m.media-amazon.com/images/I/61uZ4l7QVJL._AC._SR360,460.jpg',
+    },
+    {
+      id: 8,
+      categoryTitle: 'Electronics',
+      productTitle: 'Product 3',
+      price: 300,
+      seller: 'Seller 3',
+      publishedDate: '2021-09-03',
+      label: '',
+      productImage:
+        'https://m.media-amazon.com/images/I/61uZ4l7QVJL._AC._SR360,460.jpg',
+    },
+    {
+      id: 9,
+      categoryTitle: 'Electronics',
+      productTitle: 'Product 3',
+      price: 300,
+      seller: 'Seller 3',
+      publishedDate: '2021-09-03',
+      label: '',
+      productImage:
+        'https://m.media-amazon.com/images/I/61uZ4l7QVJL._AC._SR360,460.jpg',
+    },
   ];
 
   return (
