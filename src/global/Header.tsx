@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
     'https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600';
 
   return (
-    <header className="pt-16 p-8">
+    <header className="pt-16 p-4 md:p-8">
       <div className="isolate bg-white">
         <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
           <svg
