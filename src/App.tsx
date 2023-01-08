@@ -1,14 +1,20 @@
 import React from 'react';
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import About from './routes/About';
+import Categories from './routes/Categories';
 import Home from './routes/Home';
 import NotFound from './routes/NotFound';
+import Pages from './routes/Pages';
+import Products from './routes/Products';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
+      <Route path="/products/:handle" element={<Products />} />
+      <Route path="/categories/:handle" element={<Categories />} />
+      <Route path="/pages/:handle" element={<Pages/>} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

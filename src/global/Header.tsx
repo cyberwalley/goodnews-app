@@ -23,9 +23,15 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
       target: '_self',
     },
     {
+      id: 1,
+      title: 'Categories',
+      to: '/categories/all',
+      target: '_self',
+    },
+    {
       id: 2,
       title: 'About',
-      to: '/about',
+      to: '/pages/about',
       target: '_self',
     },
   ];
