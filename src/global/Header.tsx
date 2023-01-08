@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { SITE_LOGO, SITE_NAME } from '../utils/constants';
 
 interface HeaderProps {
   children?: React.ReactNode;
@@ -36,10 +37,7 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
     },
   ];
 
-  const SITE_NAME = 'Good news app';
-  const SITE_LOGO =
-    'https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600';
-
+ 
   return (
     <header className="pt-16 p-4 md:p-8">
       <div className="isolate bg-white">

@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   };
   const variants = {
     primary: `${baseButtonClasses} hover:translate-x-[-5px] hover:translate-y-[5px] shadow-3xl`,
-    secondary: `${baseButtonClasses}`,
+    secondary: `${baseButtonClasses} hover:bg-rose-400 transition`,
   };
 
   return (
