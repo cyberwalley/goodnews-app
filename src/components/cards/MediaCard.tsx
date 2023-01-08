@@ -5,7 +5,7 @@ interface MediaCardProps {
   title: string;
   description: string;
   image?: string;
-  tags?: string[];
+  tag?: string[];
   categories?: string[];
   publishedDate?: string;
 }
@@ -14,7 +14,7 @@ const MediaCard: React.FC<MediaCardProps> = ({
   title,
   image,
   description,
-  tags,
+  tag,
   categories,
   publishedDate,
 }) => {
@@ -32,8 +32,8 @@ const MediaCard: React.FC<MediaCardProps> = ({
       </div>
       <div className="flex flex-col justify-center w-full h-full p-4">
         <div className="flex flex-wrap gap-2 mb-1 text-green-900 font-bold">
-          {categories?.map((category, index) => (
-            <div key={index}>{category}</div>
+          {categories?.map((tag, index) => (
+            <div key={index}>{tag}</div>
           ))}
         </div>
         <h2 className="text-2xl font-bold text-black mb-4 text-left">
