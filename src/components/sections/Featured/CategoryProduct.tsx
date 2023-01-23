@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { handleize } from '../../../utils/handleize';
+import { handleize } from '../../../libs/utils';
 import Button from '../../elements/Button';
 
 interface CategoryProductProps {

@@ -1,8 +1,10 @@
 import React from 'react';
 import MediaCard from '../components/cards/MediaCard';
+import Heading from '../components/elements/Heading';
 import FeaturedCategory from '../components/sections/Featured/Category';
 import Hero from '../components/sections/Hero';
 import Layout from '../global/Layout';
+import LogoImage from '../global/LogoImage';
 
 const Home = () => {
   const tags = [
@@ -207,10 +209,15 @@ const Home = () => {
     <Layout>
       <h1 className="text-blue-500">Home</h1>
       <Hero />
+      <Heading> Offers from your preferred Brands</Heading>
+      <LogoImage />
+      <Heading>Today's picks</Heading>
       <FeaturedCategory title="Electronics" category={categories} />
+      <Heading>Featured categories</Heading>
       <FeaturedCategory title="Fashion" category={categories} />
       <FeaturedCategory title="Phones" category={categories} />
-      <div className="px-6 max-w-screen-md flex flex-col items-center mx-auto sm:px-32">
+      <Heading>Blogs</Heading>
+      <div className="px-6 sm:px-32 max-w-[1200px] grid md:grid-cols-2 gap-6 grid-cols-1 m-auto mt-6">
         <MediaCard
           title="Hello world all powered by Shopify’s one-click checkout..."
           description="Add products to your Linkpop and turn your social bio into a social storefront—all powered by Shopify’s one-click checkout..."

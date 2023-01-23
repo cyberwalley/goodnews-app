@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { handleize } from '../../libs/utils';
 import Button from '../elements/Button';
 
 interface MediaCardProps {
@@ -43,7 +45,9 @@ const MediaCard: React.FC<MediaCardProps> = ({
         <div className="flex flex-wrap gap-2 mb-6 text-gray-600 text-xs">
           {publishedDate}
         </div>
-        <Button onClick={() => console.log('read more')}> Read more... </Button>
+        <Link to={`blog/${handleize(title)}`}>
+          <Button onClick={() => console.log('read more')}>Read more...</Button>
+        </Link>
       </div>
     </div>
   );

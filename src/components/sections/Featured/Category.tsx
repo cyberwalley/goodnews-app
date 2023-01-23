@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { handleize } from '../../../utils/handleize';
+import { handleize } from '../../../libs/utils';
+import Section from '../../elements/Section';
 import CategoryProduct from './CategoryProduct';
 
 interface FeaturedCategoryProps {
@@ -22,7 +23,7 @@ const FeaturedCategory: React.FC<FeaturedCategoryProps> = ({
   category,
 }) => {
   return (
-    <section className="p-4 md:p-8">
+    <Section>
       <div className="w-full gap-4 md:gap-8 grid py-6 md:py-8 lg:py-12 border-primary/05 border-2 shadow-3xl border-black bg-white mb-10">
         <div className="flex gap-2 justify-between">
           <Link to={`/categories/${handleize(title)}`}>
@@ -74,7 +75,7 @@ const FeaturedCategory: React.FC<FeaturedCategoryProps> = ({
               )}
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 
