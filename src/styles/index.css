@@ -181,3 +181,21 @@
     }
   }
 }
+
+.slick-next:before,
+.slick-prev:before {
+  color: #000;
+}
+/* 
+.slick-slide {
+  width: auto !important;
+} */
+
+/* .slick-prev {
+  left: 5px;
+  z-index: 2;
+}
+
+.slick-next {
+  right: 0px;
+} */
