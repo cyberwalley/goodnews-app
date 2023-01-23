@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   const baseButtonClasses =
-    'py-3 px-8 text-base font-medium mt-10 flex w-full items-center justify-center text-center md:px-4  bg-rose-300 transition shadow-5px hover:shadow-none  inline-block whitespace-nowrap border-black text-black border-2 font-bold';
+    'py-3 px-8 text-base font-medium flex w-full items-center justify-center text-center md:px-4  bg-rose-300 transition shadow-5px hover:shadow-none  inline-block whitespace-nowrap border-black text-black border-2 font-bold';
   const widthClasses = {
     auto: 'w-auto',
     full: 'w-full',
