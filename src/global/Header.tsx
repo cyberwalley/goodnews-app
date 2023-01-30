@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-//import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 /* import { Dialog, Popover, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { SITE_LOGO, SITE_NAME } from '../libs/constants'; */
@@ -455,7 +455,7 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
       </Transition.Root>
 
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+        <p className="flex h-10 items-center justify-center bg-lime-500 px-4 text-sm font-medium text-black sm:px-6 lg:px-8">
           Get free delivery on orders over $100
         </p>
 
@@ -515,7 +515,7 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                           >
-                            <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500">
+                            <Popover.Panel className="absolute z-[100] inset-x-0 top-full text-sm text-gray-500">
                               {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                               <div
                                 className="absolute inset-0 top-1/2 bg-white shadow"

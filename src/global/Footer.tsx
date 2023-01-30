@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  SITE_INSTAGRAM,
+  SITE_INSTAGRAM_URL,
   SITE_LOGO,
   SITE_NAME,
-  SITE_TWITTER,
+  SITE_TWITTER_URL,
 } from '../libs/constants';
 
 const Footer = () => {
@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
           <div className="flex flex-row gap-x-4 md:gap-x-6">
             <Link
-              to={SITE_INSTAGRAM}
+              to={SITE_INSTAGRAM_URL}
               target="_blank"
               rel="noreferrer"
               className="hover:translate-x-[-5px] hover:translate-y-[5px] shadow-3xl px-3 py-3 bg-white border-black border-2 transition shadow-5px hover:shadow-none"
@@ -48,7 +48,7 @@ const Footer = () => {
               />
             </Link>
             <Link
-              to={SITE_TWITTER}
+              to={SITE_TWITTER_URL}
               target="_blank"
               rel="noreferrer"
               className="hover:translate-x-[-5px] hover:translate-y-[5px] shadow-3xl px-3 py-3 bg-white border-black border-2 transition shadow-5px hover:shadow-none"
