@@ -6,6 +6,7 @@ import Layout from '../global/Layout';
 import { StarIcon } from '@heroicons/react/20/solid';
 import { RadioGroup } from '@headlessui/react';
 import Button from '../components/elements/Button';
+import MetaTags from '../global/MetaTags';
 
 const product = {
   name: 'Basic Tee 6-Pack',
@@ -71,6 +72,15 @@ const Products = () => {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
   return (
     <Layout>
+      <MetaTags
+        title={`${handle} - Getdailyoffers.com`}
+        description={'heyyyy'}
+        schemaVariant="product"
+        image="https://getdailyoffers.com/images/og-image.png"
+        brand="gucci"
+        price="6.90"
+        validUntil="2021-12-31"
+      />
       <div className="pt-16 p-4 md:p-8">
         <div className="bg-white border-black border-2 shadow-3xl">
           <div className="pt-6">
@@ -325,13 +335,15 @@ const Products = () => {
                   >
                     Add to bag
                   </button> */}
-                  <Button
-                    variant="secondary"
-                    width="full"
-                    onClick={() => console.log('Get offer')}
-                  >
-                    Get offer
-                  </Button>
+                  <div className="mt-[40px]">
+                    <Button
+                      variant="secondary"
+                      width="full"
+                      onClick={() => console.log('Get offer')}
+                    >
+                      Get offer
+                    </Button>
+                  </div>
                 </form>
               </div>
 

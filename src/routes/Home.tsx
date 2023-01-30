@@ -5,6 +5,7 @@ import FeaturedCategory from '../components/sections/Featured/Category';
 import Hero from '../components/sections/Hero';
 import Layout from '../global/Layout';
 import LogoImage from '../global/LogoImage';
+import MetaTags from '../global/MetaTags';
 
 const Home = () => {
   const tags = [
@@ -207,6 +208,7 @@ const Home = () => {
 
   return (
     <Layout>
+      <MetaTags title="Getdailyoffers.com" description={'heyyyy'} />
       <h1 className="text-blue-500">Home</h1>
       <Hero />
       <Heading> Offers from your preferred Brands</Heading>
