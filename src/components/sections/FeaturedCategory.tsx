@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { handleize } from '../../../libs/utils';
-import Section from '../../elements/Section';
-import CategoryProduct from './CategoryProduct';
+import { handleize } from '../../libs/utils';
+import ProductCard from '../cards/ProductCard';
+import Heading from '../elements/Heading';
+import Section from '../elements/Section';
 
 interface FeaturedCategoryProps {
+  heading?: string;
   title: string;
   category: Array<{
     id: number;
@@ -18,12 +20,14 @@ interface FeaturedCategoryProps {
   }>;
 }
 
-const FeaturedCategory: React.FC<FeaturedCategoryProps> = ({
+const FeaturedCategory: FC<FeaturedCategoryProps> = ({
+  heading,
   title,
   category,
 }) => {
   return (
     <Section>
+      <Heading>{heading}</Heading>
       <div className="w-full gap-4 md:gap-8 grid py-6 md:py-8 lg:py-12 border-primary/05 border-2 shadow-3xl border-black bg-white mb-10">
         <div className="flex gap-2 justify-between">
           <Link to={`/categories/${handleize(title)}`}>
@@ -62,15 +66,17 @@ const FeaturedCategory: React.FC<FeaturedCategoryProps> = ({
                   publishedDate,
                   productImage,
                 }) => (
-                  <CategoryProduct
-                    key={id}
-                    productTitle={productTitle}
-                    price={price}
-                    seller={seller}
-                    id={id}
-                    productImage={productImage}
-                    label="New"
-                  />
+                  <div className="grid gap-2 snap-start w-72  bg-white min-h-[32rem]">
+                    <ProductCard
+                      key={id}
+                      productTitle={productTitle}
+                      price={price}
+                      seller={seller}
+                      id={id}
+                      productImage={productImage}
+                      label="New"
+                    />
+                  </div>
                 ),
               )}
         </div>
