@@ -6,11 +6,13 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({children}) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main>
+        <div className='max-w-[1250px] m-auto'>{children}</div>
+      </main>
       <Footer />
     </>
   );

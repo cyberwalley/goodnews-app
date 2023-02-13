@@ -5,7 +5,7 @@ interface HeadingProps {
 }
 
 const Heading: FC<HeadingProps> = ({ children }) => {
-  return <h2 className='text-black px-8 text-3xl text-center capitalize'>{children}</h2>;
+  return <h2 className='text-black px-8 text-3xl text-center capitalize mb-8'>{children}</h2>;
 };
 
 Heading.displayName = 'Heading';
