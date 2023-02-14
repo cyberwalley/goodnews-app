@@ -144,7 +144,7 @@ const Categories = () => {
       <div className="pl-4 pr-4 md:pl-8 md:pr-8">
         <div className="bg-white border-2 shadow-3xl border-black">
           <div className="px-8 mx-auto py-6 md:py-8 lg:py-12  ">
-            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-3 xl:gap-x-8">
+            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 xl:gap-x-8">
               {products.map(
                 ({
                   id,

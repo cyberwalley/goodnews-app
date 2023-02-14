@@ -53,7 +53,7 @@ const AllProducts: FC<AllProductsProps> = ({ products, heading }) => {
           <Filters />
         </div>
         <div className="px-8 mx-auto py-6 md:py-8 lg:py-8  ">
-          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-3 xl:gap-x-8">
+          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
             {products.map(
               ({
                 id,
