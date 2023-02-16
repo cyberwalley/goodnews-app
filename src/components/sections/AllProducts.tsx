@@ -7,14 +7,14 @@ import Section from '../elements/Section';
 interface AllProductsProps {
   heading: string;
   products: Array<{
-    id: number;
-    productTitle: string;
-    price: number;
+    id: string;
+    title: string;
+    price: string;
     seller: string;
     publishedDate: string;
     label: string;
     categoryTitle: string;
-    productImage: string;
+    image: string;
   }>;
 }
 
@@ -57,20 +57,20 @@ const AllProducts: FC<AllProductsProps> = ({ products, heading }) => {
             {products.map(
               ({
                 id,
-                productTitle,
+                title,
                 price,
                 label,
                 seller,
                 publishedDate,
-                productImage,
+                image,
               }) => (
                 <ProductCard
                   key={id}
-                  productTitle={productTitle}
+                  title={title}
                   price={price}
                   seller={seller}
                   id={id}
-                  productImage={productImage}
+                  image={image}
                   label="New"
                 />
               ),

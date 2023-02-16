@@ -5,24 +5,24 @@ import { handleize } from '../../libs/utils';
 import Button from '../elements/Button';
 
 interface ProductCardProps {
-  id: number;
-  productTitle: string;
-  price: number;
+  id: string;
+  title: string;
+  price: string;
   label: string;
   seller: string;
-  productImage: string;
+  image: string;
 }
 
 const ProductCard: FC<ProductCardProps> = ({
   id,
-  productTitle,
+  title,
   price,
   label,
   seller,
-  productImage,
+  image,
 }) => {
   return (
-    <Link to={`products/${handleize(productTitle)}`}>
+    <Link to={`products/${title}`}>
       {/* <div className="grid gap-2 snap-start border-black border-[1px] w-72 px-4 py-3 bg-white min-h-[32rem]">
         <div className="card-image aspect-[4/5] bg-primary/5">
           {label && (
@@ -84,8 +84,8 @@ const ProductCard: FC<ProductCardProps> = ({
             </label>
           )}
           <img
-            src={productImage}
-            alt={productTitle}
+            src={image}
+            alt={title}
             className="h-[200px] w-full object-contain object-center lg:w-full aspect-[4/5]"
             sizes="320"
             height="400"
@@ -100,7 +100,7 @@ const ProductCard: FC<ProductCardProps> = ({
         <div className="mt-2 flex justify-between">
           <h3 className="text-sm text-gray-700 text-[14px] min-h-[2.5rem]  overflow-hidden whitespace-wrap line-clamp-2">
             <span aria-hidden="true" className="absolute inset-0" />
-            {productTitle}
+            {title}
           </h3>
         </div>
         <div className="mt-2">

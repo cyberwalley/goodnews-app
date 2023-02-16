@@ -9,14 +9,14 @@ interface FeaturedCategoryProps {
   heading?: string;
   title: string;
   category: Array<{
-    id: number;
-    productTitle: string;
-    price: number;
+    id: string;
+    title: string;
+    price: string;
     seller: string;
     publishedDate: string;
     label: string;
     categoryTitle: string;
-    productImage: string;
+    image: string;
   }>;
 }
 
@@ -59,21 +59,21 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
               .map(
                 ({
                   id,
-                  productTitle,
+                  title,
                   price,
                   label,
                   seller,
                   publishedDate,
-                  productImage,
+                  image,
                 }) => (
                   <div className="grid gap-2 snap-start w-72  bg-white min-h-[32rem]">
                     <ProductCard
                       key={id}
-                      productTitle={productTitle}
+                      title={title}
                       price={price}
                       seller={seller}
                       id={id}
-                      productImage={productImage}
+                      image={image}
                       label="New"
                     />
                   </div>

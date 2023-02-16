@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MediaCard from '../components/cards/MediaCard';
 import Heading from '../components/elements/Heading';
 import AllProducts from '../components/sections/AllProducts';
@@ -246,7 +246,7 @@ const Home = () => {
     },
   ];
 
-  const products = [
+  /* const products = [
     {
       id: 1,
       categoryTitle: 'Electronics',
@@ -369,7 +369,23 @@ const Home = () => {
       productImage:
         'https://m.media-amazon.com/images/I/61uZ4l7QVJL._AC._SR360,460.jpg',
     },
-  ];
+  ]; */
+  const [products, setProducts] = useState([]);
+
+  const loadProducts = async () => {
+    try {
+      const res = await fetch('/api/products');
+      const products = await res.json();
+      console.log(products);
+      setProducts(products);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
 
   return (
     <Layout>
