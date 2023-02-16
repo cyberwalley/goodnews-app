@@ -72,7 +72,7 @@ const ProductCard: FC<ProductCardProps> = ({
         key={id}
         className="group relative px-4 py-3 border-black border-[1px]"
       >
-        <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+        <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-white group-hover:opacity-75 lg:aspect-none">
           {label && (
             <label className="max-w-prose whitespace-pre-wrap text-fine subpixel-antialiased absolute top-0 right-0 m-4 text-right z-1 border-[1px] px-2 py-1 rounded bg-lime-400 text-black ">
               {'20% off'}
@@ -86,7 +86,7 @@ const ProductCard: FC<ProductCardProps> = ({
           <img
             src={productImage}
             alt={productTitle}
-            className="h-full w-full object-cover object-center lg:h-full lg:w-full aspect-[4/5]"
+            className="h-[200px] w-full object-contain object-center lg:w-full aspect-[4/5]"
             sizes="320"
             height="400"
             decoding="async"
