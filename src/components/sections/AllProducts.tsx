@@ -7,14 +7,17 @@ import Section from '../elements/Section';
 interface AllProductsProps {
   heading: string;
   products: Array<{
-    id: number;
-    productTitle: string;
-    price: number;
+    id: string;
+    title: string;
+    price: string;
     seller: string;
-    publishedDate: string;
-    label: string;
+    published: boolean;
     categoryTitle: string;
-    productImage: string;
+    image1: string;
+    comparedAtPrice: string;
+    discount: string;
+    createdAt?: string;
+    sellerName?: string[];
   }>;
 }
 
@@ -54,27 +57,34 @@ const AllProducts: FC<AllProductsProps> = ({ products, heading }) => {
         </div>
         <div className="px-8 mx-auto py-6 md:py-8 lg:py-8  ">
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
-            {products.map(
-              ({
-                id,
-                productTitle,
-                price,
-                label,
-                seller,
-                publishedDate,
-                productImage,
-              }) => (
-                <ProductCard
-                  key={id}
-                  productTitle={productTitle}
-                  price={price}
-                  seller={seller}
-                  id={id}
-                  productImage={productImage}
-                  label="New"
-                />
-              ),
-            )}
+            {products
+              .filter(products => products.published === true)
+              .map(
+                ({
+                  id,
+                  title,
+                  price,
+                  seller,
+                  image1,
+                  comparedAtPrice,
+                  discount,
+                  createdAt,
+                  sellerName,
+                }) => (
+                  <ProductCard
+                    key={id}
+                    title={title}
+                    price={price}
+                    seller={seller}
+                    id={id}
+                    image={image1}
+                    comparedAtPrice={comparedAtPrice}
+                    discount={discount}
+                    createdAt={createdAt}
+                    sellerName={sellerName}
+                  />
+                ),
+              )}
           </div>
         </div>
       </div>

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ProductCard from '../components/cards/ProductCard';
 import Layout from '../global/Layout';
 
 const Categories = () => {
   const { handle } = useParams<{ handle: string }>();
-  const products = [
+  /* const products = [
     {
       id: 1,
       categoryTitle: 'Electronics',
@@ -128,7 +128,26 @@ const Categories = () => {
       productImage:
         'https://m.media-amazon.com/images/I/61uZ4l7QVJL._AC._SR360,460.jpg',
     },
-  ];
+  ]; */
+
+  const [categories, setCategories] = useState([]);
+
+  const loadProducts = async () => {
+    try {
+      const res = await fetch('/api/products');
+      const products = await res.json();
+      console.log(products, 'categories page');
+      if (products) {
+        setCategories(products);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
 
   return (
     <Layout>
@@ -145,27 +164,29 @@ const Categories = () => {
         <div className="bg-white border-2 shadow-3xl border-black">
           <div className="px-8 mx-auto py-6 md:py-8 lg:py-12  ">
             <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
-              {products.map(
-                ({
-                  id,
-                  productTitle,
-                  price,
-                  label,
-                  seller,
-                  publishedDate,
-                  productImage,
-                }) => (
-                  <ProductCard
-                    key={id}
-                    productTitle={productTitle}
-                    price={price}
-                    seller={seller}
-                    id={id}
-                    productImage={productImage}
-                    label="New"
-                  />
-                ),
-              )}
+              {categories
+                .filter(products => products === true)
+                .map(
+                  ({
+                    id,
+                    title,
+                    price,
+                    label,
+                    seller,
+                    publishedDate,
+                    image,
+                  }) => (
+                    <ProductCard
+                      key={id}
+                      title={title}
+                      price={price}
+                      seller={seller}
+                      id={id}
+                      image={image}
+                      label="New"
+                    />
+                  ),
+                )}
             </div>
           </div>
         </div>
@@ -177,4 +198,3 @@ const Categories = () => {
 Categories.displayName = 'Categories';
 
 export default Categories;
-
