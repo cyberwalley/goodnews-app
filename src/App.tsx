@@ -9,6 +9,7 @@ import Pages from './routes/Pages';
 import Products from './routes/Products';
 
 function App() {
+  
   return (
     <Routes>
       <Route path="/" element={<Home />} />

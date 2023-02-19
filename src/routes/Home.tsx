@@ -376,8 +376,10 @@ const Home = () => {
     try {
       const res = await fetch('/api/products');
       const products = await res.json();
-      console.log(products);
-      setProducts(products);
+      if (products) {
+        setProducts(products);
+        console.log(products, 'home');
+      }
     } catch (error) {
       console.error(error);
     }

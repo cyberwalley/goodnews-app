@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
-import React, { useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import Layout from '../global/Layout';
 
 import { StarIcon } from '@heroicons/react/20/solid';
@@ -62,14 +62,169 @@ const product = {
   details:
     'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
 };
-const reviews = { href: '#', average: 4, totalCount: 117 };
+/* const reviews = { href: '#', average: 4, totalCount: 117 };
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
-}
+} */
+/* 
+let vendorTable = base.getTable("Vendors");
+let query = await vendorTable.selectRecordsAsync()
+
+let exampleValue = query.records[0].getCellValue("Quoted Parts")
+console.log(exampleValue) */
 
 const Products = () => {
   const { handle } = useParams<{ handle: string }>();
+  //const { title } = products;
+
+  //const location = useLocation();
+  //const { id, title } = location.state;
+
+  //const [products, setProducts] = useState(product);
+  //console.log(location.state, title, id, 'location.state');
+
+  /*  const [productss, setProductss] = useState([]);
+
+  const loadProducts = async () => {
+    try {
+      const res = await fetch(`/api/products`);
+      const products = await res.json();
+      if (products) {
+        setProductss(products);
+      }
+      console.log(productss, 'single product');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+ */
+  /*  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  const loadProducts = async () => {
+    try {
+      const res = await fetch(`/api/single-product?id=${id}`);
+      const products = await res.json();
+      if (products) {
+        setProducts(products);
+      }
+      console.log(products, 'single product');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, []); */
+
+  /* var Airtable = require('airtable');
+  var base = new Airtable({
+    apiKey:
+      'patnbhqWq2NCxewM8.1567c84c1d9e1854ad31f96fc3a557d0bf1359cde295a63bcacf32459e398d6c',
+  }).base('appcIC8f0Eb96WxcK');
+
+  base('Products').find(
+    'recDKuY9tACtJvriI',
+    function (err: any, record: { id: any }) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log('Retrieved', { ...record });
+    },
+  );  */
+
+  /*  var Airtable = require('airtable');
+  var base = new Airtable({
+    apiKey:
+      'patnbhqWq2NCxewM8.1567c84c1d9e1854ad31f96fc3a557d0bf1359cde295a63bcacf32459e398d6c',
+  }).base('appcIC8f0Eb96WxcK'); */
+
+  //const table = base.getTable('Products');
+  /* const query = base('Products').selectRecordsAsync({ fields: ['title'] });
+  const match = query.records.find(
+    (rec: { name: string | undefined }) => rec.name === handle,
+  );
+
+  if (match) {
+    console.log(match);
+  } */
+
+  /* base('Products').find(
+    'recDKuY9tACtJvriI',
+    function (err: any, record: { id: any }) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log('Retrieved', { ...record });
+    },
+  ); */
+
+  /*  const table = base('Products').find(
+    'Lefant Robot Vacuums and Mop, 2000Pa Smart Vacuum Robot, 100mins Runtime, WiFi/App/Alexa Control, Anti-Collision/Drop Sensor, 11*11*2.9 Inch , 4 Cleaning Modes Ideal for Pet Hair, Hard Floor (M210B)',
+    function (err: any, record: { fields: [] }) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log('Retrieved', { ...record });
+    },
+  );
+  console.log(table, 'table'); */
+  /* const query = table.selectRecordsAsync({ fields: ['title'] });
+  console.log(query, 'query');
+ */
+
+  /*  const loadProducts = async () => {
+    try {
+      const res = await fetch(`/api/single-product`);
+      const products = await res.json();
+      if (products) {
+        setProducts(products);
+      }
+      console.log(products, 'single product');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, []); */
+
+  /*  const [filterdProducts, setFilterdProducts] = useState([]);
+
+  const loadProducts = async () => {
+    try {
+      const res = await fetch('/api/products');
+      const products = await res.json();
+      if (products) {
+        const hello = filterdProducts.filter(
+          (product: any) => product.title === 'product1',
+        );
+        setFilterdProducts(hello);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, []); */
+
+  /* const hello = filterdProducts.filter(
+    (product: any) => product.title === 'product1',
+  ); */
+
   return (
     <Layout>
       <MetaTags
@@ -89,29 +244,29 @@ const Products = () => {
                 role="list"
                 className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
               >
-                {product.breadcrumbs.map(breadcrumb => (
-                  <li key={breadcrumb.id}>
-                    <div className="flex items-center">
-                      <a
-                        href={breadcrumb.href}
-                        className="mr-2 text-sm font-medium text-gray-900"
-                      >
-                        {breadcrumb.name}
-                      </a>
-                      <svg
-                        width={16}
-                        height={20}
-                        viewBox="0 0 16 20"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        className="h-5 w-4 text-gray-300"
-                      >
-                        <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                      </svg>
-                    </div>
-                  </li>
-                ))}
+                {/* products?.breadcrumbs?.map(breadcrumb => (
+                    <li key={breadcrumb.id}>
+                      <div className="flex items-center">
+                        <a
+                          href={breadcrumb.href}
+                          className="mr-2 text-sm font-medium text-gray-900"
+                        >
+                          {breadcrumb.name}
+                        </a>
+                        <svg
+                          width={16}
+                          height={20}
+                          viewBox="0 0 16 20"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                          className="h-5 w-4 text-gray-300"
+                        >
+                          <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                        </svg>
+                      </div>
+                    </li>
+                  )) */}
                 <li className="text-sm">
                   <a
                     href={product.href}
@@ -135,7 +290,7 @@ const Products = () => {
               </div>
               <div className="lg:pr-8 p-8">
                 <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-4 mt-4">
-                  {product.name}
+                  {handle}
                 </h1>
                 <p className="text-3xl tracking-tight text-gray-900">
                   {product.price}
@@ -167,7 +322,7 @@ const Products = () => {
                     affilate commission.
                   </p>
                 </div>
-                <div className='flex flex-row gap-x-4 md:gap-x-6 justify-center mt-10'>
+                <div className="flex flex-row gap-x-4 md:gap-x-6 justify-center mt-10">
                   <Link
                     to={SITE_TWITTER_URL}
                     target="_blank"

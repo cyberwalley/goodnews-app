@@ -136,8 +136,10 @@ const Categories = () => {
     try {
       const res = await fetch('/api/products');
       const products = await res.json();
-      console.log(products);
-      setCategories(products);
+      console.log(products, 'categories page');
+      if (products) {
+        setCategories(products);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -163,28 +165,28 @@ const Categories = () => {
           <div className="px-8 mx-auto py-6 md:py-8 lg:py-12  ">
             <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
               {categories
-              .filter((category) => category === handle)
-              .map(
-                ({
-                  id,
-                  title,
-                  price,
-                  label,
-                  seller,
-                  publishedDate,
-                  image,
-                }) => (
-                  <ProductCard
-                    key={id}
-                    title={title}
-                    price={price}
-                    seller={seller}
-                    id={id}
-                    image={image}
-                    label="New"
-                  />
-                ),
-              )}
+                .filter(products => products === true)
+                .map(
+                  ({
+                    id,
+                    title,
+                    price,
+                    label,
+                    seller,
+                    publishedDate,
+                    image,
+                  }) => (
+                    <ProductCard
+                      key={id}
+                      title={title}
+                      price={price}
+                      seller={seller}
+                      id={id}
+                      image={image}
+                      label="New"
+                    />
+                  ),
+                )}
             </div>
           </div>
         </div>
@@ -196,4 +198,3 @@ const Categories = () => {
 Categories.displayName = 'Categories';
 
 export default Categories;
-

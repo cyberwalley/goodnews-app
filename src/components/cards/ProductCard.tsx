@@ -8,9 +8,13 @@ interface ProductCardProps {
   id: string;
   title: string;
   price: string;
-  label: string;
-  seller: string;
+  label?: string;
+  seller?: string;
   image: string;
+  comparedAtPrice?: string;
+  discount?: string;
+  createdAt?: string;
+  sellerName?:string[]
 }
 
 const ProductCard: FC<ProductCardProps> = ({
@@ -20,9 +24,15 @@ const ProductCard: FC<ProductCardProps> = ({
   label,
   seller,
   image,
+  comparedAtPrice,
+  discount,
+  createdAt,
+  sellerName
 }) => {
+  const formattedTitle = handleize(title);
+
   return (
-    <Link to={`products/${title}`}>
+    <Link to={`products/${formattedTitle}`} state={{id, title}}>
       {/* <div className="grid gap-2 snap-start border-black border-[1px] w-72 px-4 py-3 bg-white min-h-[32rem]">
         <div className="card-image aspect-[4/5] bg-primary/5">
           {label && (
@@ -73,14 +83,14 @@ const ProductCard: FC<ProductCardProps> = ({
         className="group relative px-4 py-3 border-black border-[1px]"
       >
         <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-white group-hover:opacity-75 lg:aspect-none">
-          {label && (
+          {discount && (
             <label className="max-w-prose whitespace-pre-wrap text-fine subpixel-antialiased absolute top-0 right-0 m-4 text-right z-1 border-[1px] px-2 py-1 rounded bg-lime-400 text-black ">
-              {'20% off'}
+              {discount}
             </label>
           )}
-          {label && (
+          {createdAt && (
             <label className="max-w-prose whitespace-pre-wrap text-fine subpixel-antialiased absolute top-0 left-0 m-4 text-right z-1 border-[1px] px-1 py-1 rounded bg-red-500 text-white ">
-              {label}
+              {'New'}
             </label>
           )}
           <img
@@ -94,7 +104,7 @@ const ProductCard: FC<ProductCardProps> = ({
         </div>
         <div className="mt-2">
           <p className="text-sm text-gray-900 text-[11px] font-bold">
-            {seller}
+            {sellerName}
           </p>
         </div>
         <div className="mt-2 flex justify-between">
@@ -103,8 +113,11 @@ const ProductCard: FC<ProductCardProps> = ({
             {title}
           </h3>
         </div>
-        <div className="mt-2">
-          <p className="text-sm font-medium text-gray-900">{price}</p>
+        <div className="mt-2 flex items-center gap-2">
+          <p className="text-lg font-lg text-red-600">{price}</p>
+          <p className="text-sm font-sm text-gray-500 line-through">
+            {comparedAtPrice}
+          </p>
         </div>
         <div className="mt-2">
           <Button
