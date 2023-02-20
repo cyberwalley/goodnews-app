@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { SITE_TWITTER_URL } from '../../libs/constants';
 import { handleize } from '../../libs/utils';
 import Button from '../elements/Button';
 
@@ -14,7 +13,7 @@ interface ProductCardProps {
   comparedAtPrice?: string;
   discount?: string;
   createdAt?: string;
-  sellerName?:string[]
+  sellerName?: string[];
 }
 
 const ProductCard: FC<ProductCardProps> = ({
@@ -27,57 +26,12 @@ const ProductCard: FC<ProductCardProps> = ({
   comparedAtPrice,
   discount,
   createdAt,
-  sellerName
+  sellerName,
 }) => {
   const formattedTitle = handleize(title);
 
   return (
-    <Link to={`products/${formattedTitle}`} state={{id, title}}>
-      {/* <div className="grid gap-2 snap-start border-black border-[1px] w-72 px-4 py-3 bg-white min-h-[32rem]">
-        <div className="card-image aspect-[4/5] bg-primary/5">
-          {label && (
-            <label className="max-w-prose whitespace-pre-wrap text-fine subpixel-antialiased absolute top-0 right-0 m-4 text-right z-10 border-[1px] px-2 py-1 rounded bg-lime-400 text-black ">
-              {'20% off'}
-            </label>
-          )}
-          {label && (
-            <label className="max-w-prose whitespace-pre-wrap text-fine subpixel-antialiased absolute top-0 left-0 m-4 text-right z-10 border-[1px] px-1 py-1 rounded bg-red-500 text-white ">
-              {label}
-            </label>
-          )}
-          <img
-            alt={handleize(productTitle)}
-            loading="lazy"
-            srcSet={productImage}
-            className="aspect-[4/5] w-full object-cover fadeIn"
-            sizes="320"
-            height="400"
-            decoding="async"
-          />
-        </div>
-        <div className="grid gap-1">
-          <div className="flex gap-4">
-            <span className="max-w-prose whitespace-pre-wrap inherit text-[11px] flex gap-4 text-black font-bold">
-              <div>From {seller}</div>
-            </span>
-          </div>
-          <h3 className="max-w-prose text-[14px] min-h-[2.5rem] w-full overflow-hidden whitespace-wrap line-clamp-2 text-black">
-            {productTitle}
-          </h3>
-          <div className="flex gap-4">
-            <span className="max-w-prose whitespace-pre-wrap inherit text-copy flex gap-4 text-black">
-              <div>$ {price}</div>
-            </span>
-          </div>
-        </div>
-        <Button
-          variant="secondary"
-          width="full"
-          onClick={() => console.log('Get offer')}
-        >
-          Get offer
-        </Button>
-      </div> */}
+    <Link to={`products/${formattedTitle}`} state={{ id, title }}>
       <div
         key={id}
         className="group relative px-4 py-3 border-black border-[1px]"
