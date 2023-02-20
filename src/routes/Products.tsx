@@ -9,6 +9,8 @@ import { RadioGroup } from '@headlessui/react';
 import Button from '../components/elements/Button';
 import MetaTags from '../global/MetaTags';
 import { SITE_TWITTER_URL } from '../libs/constants';
+import { getProduct, getProducts } from '../api/products';
+import { useQuery } from '@tanstack/react-query';
 
 const product = {
   name: 'Basic Tee 6-Pack',
@@ -75,155 +77,26 @@ let exampleValue = query.records[0].getCellValue("Quoted Parts")
 console.log(exampleValue) */
 
 const Products = () => {
+  const location = useLocation();
   const { handle } = useParams<{ handle: string }>();
-  //const { title } = products;
 
-  //const location = useLocation();
-  //const { id, title } = location.state;
+  /* const { data, isLoading, isSuccess } = useQuery({
+    queryKey: ['products on product page'],
+    queryFn: getProducts,
+  });
 
-  //const [products, setProducts] = useState(product);
-  //console.log(location.state, title, id, 'location.state');
+  const productz =
+    data && data[0].filter((product: any) => (product.title = 'product1'));
+  console.log(productz, 'product');
+  const { title, price, description, image, id } = productz[0]; */
+  const currentHandle = handle || location.pathname;
 
-  /*  const [productss, setProductss] = useState([]);
+  const { data, isLoading, isSuccess } = useQuery({
+    queryKey: ['products on product page', currentHandle.replace(/-/g, ' ')],
+    queryFn: getProduct,
+  });
 
-  const loadProducts = async () => {
-    try {
-      const res = await fetch(`/api/products`);
-      const products = await res.json();
-      if (products) {
-        setProductss(products);
-      }
-      console.log(productss, 'single product');
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    loadProducts();
-  }, []);
- */
-  /*  useEffect(() => {
-    loadProducts();
-  }, []);
-
-  const loadProducts = async () => {
-    try {
-      const res = await fetch(`/api/single-product?id=${id}`);
-      const products = await res.json();
-      if (products) {
-        setProducts(products);
-      }
-      console.log(products, 'single product');
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    loadProducts();
-  }, []); */
-
-  /* var Airtable = require('airtable');
-  var base = new Airtable({
-    apiKey:
-      'patnbhqWq2NCxewM8.1567c84c1d9e1854ad31f96fc3a557d0bf1359cde295a63bcacf32459e398d6c',
-  }).base('appcIC8f0Eb96WxcK');
-
-  base('Products').find(
-    'recDKuY9tACtJvriI',
-    function (err: any, record: { id: any }) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log('Retrieved', { ...record });
-    },
-  );  */
-
-  /*  var Airtable = require('airtable');
-  var base = new Airtable({
-    apiKey:
-      'patnbhqWq2NCxewM8.1567c84c1d9e1854ad31f96fc3a557d0bf1359cde295a63bcacf32459e398d6c',
-  }).base('appcIC8f0Eb96WxcK'); */
-
-  //const table = base.getTable('Products');
-  /* const query = base('Products').selectRecordsAsync({ fields: ['title'] });
-  const match = query.records.find(
-    (rec: { name: string | undefined }) => rec.name === handle,
-  );
-
-  if (match) {
-    console.log(match);
-  } */
-
-  /* base('Products').find(
-    'recDKuY9tACtJvriI',
-    function (err: any, record: { id: any }) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log('Retrieved', { ...record });
-    },
-  ); */
-
-  /*  const table = base('Products').find(
-    'Lefant Robot Vacuums and Mop, 2000Pa Smart Vacuum Robot, 100mins Runtime, WiFi/App/Alexa Control, Anti-Collision/Drop Sensor, 11*11*2.9 Inch , 4 Cleaning Modes Ideal for Pet Hair, Hard Floor (M210B)',
-    function (err: any, record: { fields: [] }) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log('Retrieved', { ...record });
-    },
-  );
-  console.log(table, 'table'); */
-  /* const query = table.selectRecordsAsync({ fields: ['title'] });
-  console.log(query, 'query');
- */
-
-  /*  const loadProducts = async () => {
-    try {
-      const res = await fetch(`/api/single-product`);
-      const products = await res.json();
-      if (products) {
-        setProducts(products);
-      }
-      console.log(products, 'single product');
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    loadProducts();
-  }, []); */
-
-  /*  const [filterdProducts, setFilterdProducts] = useState([]);
-
-  const loadProducts = async () => {
-    try {
-      const res = await fetch('/api/products');
-      const products = await res.json();
-      if (products) {
-        const hello = filterdProducts.filter(
-          (product: any) => product.title === 'product1',
-        );
-        setFilterdProducts(hello);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    loadProducts();
-  }, []); */
-
-  /* const hello = filterdProducts.filter(
-    (product: any) => product.title === 'product1',
-  ); */
+  console.log(data, 'data');
 
   return (
     <Layout>

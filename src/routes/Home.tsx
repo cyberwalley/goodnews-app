@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import MediaCard from '../components/cards/MediaCard';
 import Heading from '../components/elements/Heading';
-import AllProducts from '../components/sections/AllProducts';
+
 import Campaign from '../components/sections/Campaign';
-import FeaturedCategory from '../components/sections/FeaturedCategory';
 import Hero from '../components/sections/Hero';
 import Layout from '../global/Layout';
 import LogoImage from '../global/LogoImage';
 import MetaTags from '../global/MetaTags';
+import { useQuery } from '@tanstack/react-query';
+import { getProducts } from '../api/products';
+import FeaturedCategory from '../components/sections/FeaturedCategory';
 
 const Home = () => {
   const tags = [
@@ -372,7 +374,7 @@ const Home = () => {
   ]; */
   const [products, setProducts] = useState([]);
 
-  const loadProducts = async () => {
+  /* const loadProducts = async () => {
     try {
       const res = await fetch('/api/products');
       const products = await res.json();
@@ -388,6 +390,12 @@ const Home = () => {
   useEffect(() => {
     loadProducts();
   }, []);
+ */
+  const { data, isLoading, isSuccess } = useQuery({
+    queryKey: ['products'],
+    queryFn: getProducts,
+  });
+  console.log(data, 'home - data');
 
   return (
     <Layout>
@@ -399,13 +407,8 @@ const Home = () => {
       {/* <Heading> Offers from your preferred Brands</Heading>
       <LogoImage /> */}
       <Campaign heading="Trending deals" campaign={campaign} />
-      <AllProducts heading="All deals" products={products} />
-      {/* <Heading>Today's picks</Heading>
-      <FeaturedCategory title="Electronics" category={categories} />
-      <Heading>Featured categories</Heading>
-      <FeaturedCategory title="Fashion" category={categories} />
-      <FeaturedCategory title="Phones" category={categories} /> */}
-      {/* <Heading>Blogs</Heading>
+      <FeaturedCategory heading="All deals" products={data} loading={isLoading} />
+      {/*
       <div className="px-6 sm:px-32 max-w-[1200px] grid md:grid-cols-2 gap-6 grid-cols-1 m-auto mt-6">
         <MediaCard
           title="Hello world all powered by Shopify’s one-click checkout..."
