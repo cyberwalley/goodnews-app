@@ -11,6 +11,7 @@ import MetaTags from '../global/MetaTags';
 import { SITE_TWITTER_URL } from '../libs/constants';
 import { getProduct, getProducts } from '../api/products';
 import { useQuery } from '@tanstack/react-query';
+import useContentful from '../api/useContentful';
 
 const product = {
   name: 'Basic Tee 6-Pack',
@@ -84,20 +85,37 @@ const Products = () => {
     queryKey: ['products on product page'],
     queryFn: getProducts,
   });
-
+(slug)
   const productz =
     data && data[0].filter((product: any) => (product.title = 'product1'));
   console.log(productz, 'product');
   const { title, price, description, image, id } = productz[0]; */
-  const currentHandle = handle || location.pathname;
+  /* const currentHandle = handle || location.pathname;
 
   const { data, isLoading, isSuccess } = useQuery({
     queryKey: ['products on product page', currentHandle.replace(/-/g, ' ')],
     queryFn: getProduct,
+  }); */
+
+  const slug = handle || location.state.slug;
+  const { getProduct } = useContentful();
+
+  //const [product, setProduct] = useState();
+
+  const { data, isLoading, isSuccess } = useQuery<string[] | undefined>({
+    queryKey: ['single-product', slug],
+    queryFn: () => getProduct(slug),
   });
 
-  console.log(data, 'data');
+  /* const beko = koko.data?.map(item => item);
+  console.log(beko, 'product page'); */
 
+  //const {name} = data?[0]
+
+  //@ts-ignore
+  console.log(data?.[0]);
+  //@ts-ignore
+  //const { name, image1 } = data;
   return (
     <Layout>
       <MetaTags
@@ -146,7 +164,8 @@ const Products = () => {
                     aria-current="page"
                     className="font-medium text-gray-500 hover:text-gray-600"
                   >
-                    {product.name}
+                    {/* @ts-ignore */}
+                    {data?.[0].name}
                   </a>
                 </li>
               </ol>
@@ -156,17 +175,23 @@ const Products = () => {
             <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
               <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
                 <img
-                  src={product.images[3].src}
-                  alt={product.images[3].alt}
-                  className="h-full w-full object-cover object-center"
+                  /*  @ts-ignore  */
+                  src={data?.[0].image1}
+                  /*  @ts-ignore  */
+                  alt={data?.[0].name}
+                  /*  @ts-ignore  */
+                  title={data?.[0].name}
+                  className="w-full object-cover object-center"
                 />
               </div>
               <div className="lg:pr-8 p-8">
                 <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-4 mt-4">
-                  {handle}
+                  {/* @ts-ignore */}
+                  {data?.[0].name}
                 </h1>
                 <p className="text-3xl tracking-tight text-gray-900">
-                  {product.price}
+                  {/* @ts-ignore */}
+                  {data?.[0].price}
                 </p>
                 <div className="py-10 lg:col-span-2 lg:col-start-1 lg:pt-6 lg:pb-16 lg:pr-8">
                   {/* Description and details */}
@@ -175,7 +200,8 @@ const Products = () => {
 
                     <div className="space-y-6">
                       <p className="text-base text-gray-900">
-                        {product.description}
+                        {/* @ts-ignore */}
+                        {data?.[0].description}
                       </p>
                     </div>
                   </div>

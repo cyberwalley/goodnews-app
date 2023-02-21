@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MediaCard from '../components/cards/MediaCard';
 import Heading from '../components/elements/Heading';
-
+import useContentful from '../api/useContentful';
 import Campaign from '../components/sections/Campaign';
 import Hero from '../components/sections/Hero';
 import Layout from '../global/Layout';
@@ -10,6 +10,7 @@ import MetaTags from '../global/MetaTags';
 import { useQuery } from '@tanstack/react-query';
 import { getProducts } from '../api/products';
 import FeaturedCategory from '../components/sections/FeaturedCategory';
+import { time } from 'console';
 
 const Home = () => {
   const tags = [
@@ -372,7 +373,6 @@ const Home = () => {
         'https://m.media-amazon.com/images/I/61uZ4l7QVJL._AC._SR360,460.jpg',
     },
   ]; */
-  const [products, setProducts] = useState([]);
 
   /* const loadProducts = async () => {
     try {
@@ -391,11 +391,20 @@ const Home = () => {
     loadProducts();
   }, []);
  */
+  /*  const { data, isLoading, isSuccess } = useQuery({
+    queryKey: ['products'],
+    queryFn: getProducts,
+  });
+  console.log(data, 'home - data'); */
+
+  const [products, setProducts] = useState<string[] | undefined>([]);
+  const { getProducts } = useContentful();
+
   const { data, isLoading, isSuccess } = useQuery({
     queryKey: ['products'],
     queryFn: getProducts,
   });
-  console.log(data, 'home - data');
+  console.log(data, 'homepage');
 
   return (
     <Layout>
@@ -407,7 +416,11 @@ const Home = () => {
       {/* <Heading> Offers from your preferred Brands</Heading>
       <LogoImage /> */}
       <Campaign heading="Trending deals" campaign={campaign} />
-      <FeaturedCategory heading="All deals" products={data} loading={isLoading} />
+      <FeaturedCategory
+        heading="All deals"
+        products={data}
+        loading={isLoading}
+      />
       {/*
       <div className="px-6 sm:px-32 max-w-[1200px] grid md:grid-cols-2 gap-6 grid-cols-1 m-auto mt-6">
         <MediaCard

@@ -13,7 +13,7 @@ interface ProductCardProps {
   comparedAtPrice?: string;
   discount?: string;
   createdAt?: string;
-  sellerName?: string[];
+  slug?: string;
 }
 
 const ProductCard: FC<ProductCardProps> = ({
@@ -26,12 +26,12 @@ const ProductCard: FC<ProductCardProps> = ({
   comparedAtPrice,
   discount,
   createdAt,
-  sellerName,
+  slug,
 }) => {
   const formattedTitle = handleize(title);
 
   return (
-    <Link to={`products/${formattedTitle}`} state={{ id, title }}>
+    <Link to={`products/${slug}`} state={{ id, slug }}>
       <div
         key={id}
         className="group relative px-4 py-3 border-black border-[1px]"
@@ -58,7 +58,7 @@ const ProductCard: FC<ProductCardProps> = ({
         </div>
         <div className="mt-2">
           <p className="text-sm text-gray-900 text-[11px] font-bold">
-            {sellerName}
+            {seller}
           </p>
         </div>
         <div className="mt-2 flex justify-between">

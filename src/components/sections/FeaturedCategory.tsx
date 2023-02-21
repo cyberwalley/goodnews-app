@@ -6,9 +6,10 @@ import Heading from '../elements/Heading';
 import Section from '../elements/Section';
 import ProductGrid from '../Product/ProductGrid';
 
+type productGriptType = { [key: string]: string };
 interface FeaturedCategoryProps {
   heading: string;
-  products: Array<{
+  /*  products: Array<{
     id: string;
     title: string;
     price: string;
@@ -20,15 +21,18 @@ interface FeaturedCategoryProps {
     discount: string;
     createdAt?: string;
     sellerName?: string[];
-  }>;
+  }>;  */
+  products: productGriptType[] | undefined;
   loading: boolean;
 }
 
-const FeaturedCategory: FC<FeaturedCategoryProps> = ({
+//@ts-ignore
+const FeaturedCategory:FC<FeaturedCategoryProps> = ({
   products,
   heading,
   loading,
 }) => {
+  console.log(products, 'products - feature-category');
   return (
     <Section>
       <Heading>{heading}</Heading>
