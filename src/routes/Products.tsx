@@ -75,29 +75,178 @@ let query = await vendorTable.selectRecordsAsync()
 
 let exampleValue = query.records[0].getCellValue("Quoted Parts")
 console.log(exampleValue) */
+/* const { handle } = useParams<{ handle: string }>();
+const location = useLocation(); */
 
 const Products = () => {
+  //const [products, setProducts] = useState();
   const location = useLocation();
   const { handle } = useParams<{ handle: string }>();
+  const id = handle || location.pathname;
+  const formattedId = id.replace(/-/g, ' ');
 
-  /* const { data, isLoading, isSuccess } = useQuery({
-    queryKey: ['products on product page'],
-    queryFn: getProducts,
+  /*   const { data, isLoading, isSuccess } = useQuery({
+    queryKey: ['products on product page', formattedId],
+    queryFn: () => getProduct(formattedId),
   });
+  console.log(data, 'dataaa'); */
 
+  /* const getbubu = async () => {
+    var Airtable = require('airtable');
+    var base = new Airtable({
+      apiKey:
+        'patnbhqWq2NCxewM8.1567c84c1d9e1854ad31f96fc3a557d0bf1359cde295a63bcacf32459e398d6c',
+    }).base('appcIC8f0Eb96WxcK');
+    const gen = base('Products');
+    let query = await gen.selectRecordsAsync();
+
+    let exampleValue = query.records[0].getCellValue('title');
+    return console.log(exampleValue);
+  };
+
+  useEffect(() => {
+    getbubu();
+  }, []); */
+  /* const lala = async () => {
+    var Airtable = require('airtable');
+    var base = new Airtable({
+      apiKey:
+        'patnbhqWq2NCxewM8.1567c84c1d9e1854ad31f96fc3a557d0bf1359cde295a63bcacf32459e398d6c',
+    }).base('appcIC8f0Eb96WxcK');
+
+    const table = base('Products');
+    let queryResult = await table.selectRecordsAsync({
+      fields: ['title'],
+    });
+    let record = queryResult.records[0];
+    return console.log(record.getCellValue('title'));
+  };
+
+  useEffect(() => {
+    lala();
+  }, []);
+ */
+  /*
   const productz =
     data && data[0].filter((product: any) => (product.title = 'product1'));
   console.log(productz, 'product');
   const { title, price, description, image, id } = productz[0]; */
-  const currentHandle = handle || location.pathname;
 
-  const { data, isLoading, isSuccess } = useQuery({
-    queryKey: ['products on product page', currentHandle.replace(/-/g, ' ')],
-    queryFn: getProduct,
+  //const formattedHandle = currentHandle.replace('/', '');
+
+  /* const { data, isLoading, isSuccess } = useQuery({
+    queryKey: ['products on product page', formattedId],
+    queryFn: () => getProduct(formattedId),
   });
+  
 
-  console.log(data, 'data');
+  console.log(data, 'data'); */
 
+  /* interface KokoProps {
+    products: Array<{
+      id: string;
+      title: string;
+      price: string;
+      seller: string;
+      published: boolean;
+      categoryTitle: string;
+      image1: string;
+      comparedAtPrice: string;
+      discount: string;
+      createdAt?: string;
+      sellerName?: string[];
+    }>;
+  }
+  const [koko, setKoko] = useState<KokoProps>();
+  const bobo = () => {
+    var Airtable = require('airtable');
+    var base = new Airtable({
+      apiKey:
+        'patnbhqWq2NCxewM8.1567c84c1d9e1854ad31f96fc3a557d0bf1359cde295a63bcacf32459e398d6c',
+    }).base('appcIC8f0Eb96WxcK');
+
+    base('Products')
+      .select({
+        // Selecting the first 3 records in Grid view:
+        maxRecords: 3,
+        view: 'Grid view',
+        //@ts-ignore
+      })
+      .eachPage(
+        //@ts-ignore
+        function page(records, fetchNextPage) {
+          // This function (`page`) will get called for each page of records.
+          //@ts-ignore
+
+          records.forEach(function (record) {
+            const id = handle || location.pathname;
+            const formattedId = id.replace(/-/g, ' ');
+            console.log(formattedId, 'formattedId');
+            if (record.get('title') === formattedId) {
+              //console.log(formattedId);
+              const productInfo = [
+                {
+                  id: record.id,
+                  name: record.get('title'),
+                  description: record.get('description'),
+                  price: record.get('price'),
+                  comparedAtPrice: record.get('comparedAtPrice'),
+                  image1: record.get('image1'),
+                },
+              ];
+              setKoko(productInfo);
+              console.log(productInfo, 'product.Info');
+              console.log(productInfo[0].name, 'productName');
+              //return productInfo;
+            }
+            //console.log('Retrieved', products);
+            //setKoko(productInfo)
+          });
+
+          // To fetch the next page of records, call `fetchNextPage`.
+          // If there are more records, `page` will get called again.
+          // If there are no more records, `done` will get called.
+          fetchNextPage();
+        },
+        //@ts-ignore
+        function done(err) {
+          if (err) {
+            console.error(err);
+            return;
+          }
+        },
+      );
+  };
+
+  useEffect(() => {
+    bobo();
+  }, []); */
+
+  /* const query = base('Products').selectRecordsAsync({
+    fields: ['Products'],
+  });
+  const records = query.records.find(
+    //record => record.getCellValue('title') !== recordId,
+    //@ts-ignore
+    rec => rec.title === 'product1',
+  ); */
+
+  //recDKuY9tACtJvriI
+  //@ts-ignore
+  /*  base('Products').find('recDKuY9tACtJvriI', function (err, record) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(
+      'Retrieved',
+      record.id,
+      record.price,
+      record.get('price'),
+      record.get('title'),
+    );
+  }); */
+  //console.log(records, 'records');
   return (
     <Layout>
       <MetaTags

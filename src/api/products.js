@@ -5,7 +5,7 @@ export const getProducts = () => {
 };
 
 export const getProduct = id => {
-  return axios.get(`/api/single-product/id:${id}`).then(res => res.data);
+  return axios.get(`/api/single-product?id:${id}`).then(res => res.data);
 };
 
 export const createProduct = ({ title, body }) => {
