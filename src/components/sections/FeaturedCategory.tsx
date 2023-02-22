@@ -36,7 +36,7 @@ const FeaturedCategory:FC<FeaturedCategoryProps> = ({
   return (
     <Section>
       <Heading>{heading}</Heading>
-      {loading ? <>loading</> : <ProductGrid collection={products} />}
+      <ProductGrid collection={products} loading={loading} />
     </Section>
   );
 };

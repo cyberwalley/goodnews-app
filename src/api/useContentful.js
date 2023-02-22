@@ -49,7 +49,28 @@ const useContentful = () => {
     }
   };
 
-  return { getProducts, getProduct };
+  const getCampaigns = async slug => {
+    try {
+      const entries = await client.getEntries({
+        content_type: 'campaign',
+        select: 'fields',
+      });
+      const sanitizeEntries = entries.items.map(item => {
+        const id = item.sys.id;
+        return {
+          id,
+          ...item.fields,
+        };
+      });
+
+      //const sanitizeEntries = entry.items[0];
+      return sanitizeEntries;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return { getProducts, getProduct, getCampaigns };
 };
 
 export default useContentful;

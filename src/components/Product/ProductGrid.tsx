@@ -18,11 +18,11 @@ interface ProductGridProps {
     sellerName?: string[];
   }>; */
   collection: productGriptType[] | undefined;
+  loading: boolean;
 }
 //@ts-ignore
-const ProductGrid: FC<ProductGridProps> = ({ collection }) => {
-  if (!collection) return <>no products</>;
-  console.log(collection, 'collection');
+const ProductGrid: FC<ProductGridProps> = ({ collection, loading }) => {
+  if (!collection || loading) return <>Loading...</>;
   return (
     <>
       <div className="bg-white border-2 shadow-3xl border-black">

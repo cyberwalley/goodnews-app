@@ -28,7 +28,7 @@ const ProductCard: FC<ProductCardProps> = ({
   createdAt,
   slug,
 }) => {
-  const formattedTitle = handleize(title);
+  //const formattedTitle = handleize(title);
 
   return (
     <Link to={`products/${slug}`} state={{ id, slug }}>

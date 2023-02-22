@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ProductCard from '../components/cards/ProductCard';
+import Section from '../components/elements/Section';
 import Layout from '../global/Layout';
 
 const Categories = () => {
@@ -151,46 +152,50 @@ const Categories = () => {
 
   return (
     <Layout>
-      <div className="mx-auto max-w-3xl pt-20 pb-20 px-6 lg:px-8">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl text-black">
-          {handle}
-        </h1>
-        <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
-          Find Exclusive Discounts and Promotions from Top Retailers and Brands
-          at Our One-Stop Destination for Savings
-        </p>
-      </div>
-      <div className="pl-4 pr-4 md:pl-8 md:pr-8">
-        <div className="bg-white border-2 shadow-3xl border-black">
-          <div className="px-8 mx-auto py-6 md:py-8 lg:py-12  ">
-            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
-              {categories
-                .filter(products => products === true)
-                .map(
-                  ({
-                    id,
-                    title,
-                    price,
-                    label,
-                    seller,
-                    publishedDate,
-                    image,
-                  }) => (
-                    <ProductCard
-                      key={id}
-                      title={title}
-                      price={price}
-                      seller={seller}
-                      id={id}
-                      image={image}
-                      label="New"
-                    />
-                  ),
-                )}
+      <header>
+        <div className="mx-auto max-w-3xl pt-20 pb-20 px-6 lg:px-8">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl text-black">
+            {handle}
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
+            Find Exclusive Discounts and Promotions from Top Retailers and
+            Brands at Our One-Stop Destination for Savings
+          </p>
+        </div>
+      </header>
+      <Section>
+        <div className="pl-4 pr-4 md:pl-8 md:pr-8">
+          <div className="bg-white border-2 shadow-3xl border-black">
+            <div className="px-8 mx-auto py-6 md:py-8 lg:py-12  ">
+              <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
+                {categories
+                  .filter(products => products === true)
+                  .map(
+                    ({
+                      id,
+                      title,
+                      price,
+                      label,
+                      seller,
+                      publishedDate,
+                      image,
+                    }) => (
+                      <ProductCard
+                        key={id}
+                        title={title}
+                        price={price}
+                        seller={seller}
+                        id={id}
+                        image={image}
+                        label="New"
+                      />
+                    ),
+                  )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Section>
     </Layout>
   );
 };

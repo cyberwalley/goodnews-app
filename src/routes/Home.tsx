@@ -397,15 +397,21 @@ const Home = () => {
   });
   console.log(data, 'home - data'); */
 
-  const [products, setProducts] = useState<string[] | undefined>([]);
-  const { getProducts } = useContentful();
+  //const [products, setProducts] = useState<string[] | undefined>([]);
+  const { getProducts, getCampaigns } = useContentful();
 
-  const { data, isLoading, isSuccess } = useQuery({
+  const { data: products, isLoading: isProductLoading } = useQuery({
     queryKey: ['products'],
     queryFn: getProducts,
   });
-  console.log(data, 'homepage');
+  console.log(products, 'homepage');
 
+  const { data: campaigns, isLoading: isCampaignLoading } = useQuery({
+    queryKey: ['campaigns'],
+    queryFn: getCampaigns,
+  });
+
+  console.log(campaigns, 'campaigns');
   return (
     <Layout>
       <MetaTags
@@ -415,11 +421,15 @@ const Home = () => {
       <Hero />
       {/* <Heading> Offers from your preferred Brands</Heading>
       <LogoImage /> */}
-      <Campaign heading="Trending deals" campaign={campaign} />
+      <Campaign
+        heading="Trending deals"
+        campaign={campaigns}
+        loading={isCampaignLoading}
+      />
       <FeaturedCategory
         heading="All deals"
-        products={data}
-        loading={isLoading}
+        products={products}
+        loading={isProductLoading}
       />
       {/*
       <div className="px-6 sm:px-32 max-w-[1200px] grid md:grid-cols-2 gap-6 grid-cols-1 m-auto mt-6">

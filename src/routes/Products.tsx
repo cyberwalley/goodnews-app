@@ -8,7 +8,7 @@ import { StarIcon } from '@heroicons/react/20/solid';
 import { RadioGroup } from '@headlessui/react';
 import Button from '../components/elements/Button';
 import MetaTags from '../global/MetaTags';
-import { SITE_TWITTER_URL } from '../libs/constants';
+import { SITE_NAME, SITE_TWITTER_URL } from '../libs/constants';
 import { getProduct, getProducts } from '../api/products';
 import { useQuery } from '@tanstack/react-query';
 import useContentful from '../api/useContentful';
@@ -119,13 +119,18 @@ const Products = () => {
   return (
     <Layout>
       <MetaTags
-        title={`${handle} - Getdailyoffers.com`}
-        description={'heyyyy'}
+        /* @ts-ignore */
+        title={`${data?.[0].name} - ${SITE_NAME}`}
+        /* @ts-ignore */
+        description={data?.[0].description}
         schemaVariant="product"
-        image="https://getdailyoffers.com/images/og-image.png"
-        brand="gucci"
-        price="6.90"
-        validUntil="2021-12-31"
+        /* @ts-ignore */
+        image={data?.[0].image1}
+        /* @ts-ignore */
+        brand={data?.[0].brand}
+        /* @ts-ignore */
+        price={data?.[0].price}
+        validUntil="2023-12-31"
       />
       <div className="pt-16 p-4 md:p-8">
         <div className="bg-white border-black border-2 shadow-3xl">
