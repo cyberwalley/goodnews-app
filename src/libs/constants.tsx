@@ -1,4 +1,4 @@
-export const SITE_NAME = 'getcrazyoffers.com';
+export const SITE_NAME = 'Getcrazyoffers.com';
 export const ORG_NAME = 'Get Crazy Offers';
 export const SITE_URL = 'https://getdailyoffers.com';
 export const SITE_DESCRIPTION = 'Get Crazy Offers';

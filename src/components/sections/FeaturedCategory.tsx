@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
-import { getProducts } from '../../api/products';
-import ProductCard from '../cards/ProductCard';
-import Filters from '../elements/Filters';
+//import { getProducts } from '../../../functions/contentful/products';
+//import ProductCard from '../cards/ProductCard';
+//import Filters from '../elements/Filters';
 import Heading from '../elements/Heading';
 import Section from '../elements/Section';
 import ProductGrid from '../Product/ProductGrid';
 
+type productGriptType = { [key: string]: string };
 interface FeaturedCategoryProps {
   heading: string;
-  products: Array<{
+  /*  products: Array<{
     id: string;
     title: string;
     price: string;
@@ -20,19 +21,22 @@ interface FeaturedCategoryProps {
     discount: string;
     createdAt?: string;
     sellerName?: string[];
-  }>;
+  }>;  */
+  products: productGriptType[] | undefined;
   loading: boolean;
 }
 
+//@ts-ignore
 const FeaturedCategory: FC<FeaturedCategoryProps> = ({
   products,
   heading,
   loading,
 }) => {
+  console.log(products, 'products - feature-category');
   return (
     <Section>
       <Heading>{heading}</Heading>
-      {loading ? <>loading</> : <ProductGrid collection={products} />}
+      <ProductGrid collection={products} loading={loading} />
     </Section>
   );
 };

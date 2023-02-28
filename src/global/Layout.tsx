@@ -9,11 +9,11 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <Header />
+     {/*  <Header /> */}
       <main>
         <div className='max-w-[1250px] m-auto'>{children}</div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
