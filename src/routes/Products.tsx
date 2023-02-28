@@ -13,70 +13,6 @@ import { getProduct, getProducts } from '../api/products';
 import { useQuery } from '@tanstack/react-query';
 import useContentful from '../api/useContentful';
 
-const product = {
-  name: 'Basic Tee 6-Pack',
-  price: '$192',
-  href: '#',
-  breadcrumbs: [
-    { id: 1, name: 'Men', href: '#' },
-    { id: 2, name: 'Clothing', href: '#' },
-  ],
-  images: [
-    {
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
-      alt: 'Two each of gray, white, and black shirts laying flat.',
-    },
-    {
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg',
-      alt: 'Model wearing plain black basic tee.',
-    },
-    {
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg',
-      alt: 'Model wearing plain gray basic tee.',
-    },
-    {
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg',
-      alt: 'Model wearing plain white basic tee.',
-    },
-  ],
-  colors: [
-    { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
-    { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
-    { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
-  ],
-  sizes: [
-    { name: 'XXS', inStock: false },
-    { name: 'XS', inStock: true },
-    { name: 'S', inStock: true },
-    { name: 'M', inStock: true },
-    { name: 'L', inStock: true },
-    { name: 'XL', inStock: true },
-    { name: '2XL', inStock: true },
-    { name: '3XL', inStock: true },
-  ],
-  description:
-    'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
-  highlights: [
-    'Hand cut and sewn locally',
-    'Dyed with our proprietary colors',
-    'Pre-washed & pre-shrunk',
-    'Ultra-soft 100% cotton',
-  ],
-  details:
-    'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
-};
-/* const reviews = { href: '#', average: 4, totalCount: 117 };
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-} */
-/* 
-let vendorTable = base.getTable("Vendors");
-let query = await vendorTable.selectRecordsAsync()
-
-let exampleValue = query.records[0].getCellValue("Quoted Parts")
-console.log(exampleValue) */
-
 const Products = () => {
   const location = useLocation();
   const { handle } = useParams<{ handle: string }>();
@@ -101,35 +37,33 @@ const Products = () => {
   const { getProduct } = useContentful();
 
   //const [product, setProduct] = useState();
-
-  const { data, isLoading, isSuccess } = useQuery<string[] | undefined>({
+  type productGriptType = { [key: string]: string };
+  const { data, isLoading, isSuccess } = useQuery<
+    productGriptType[] | undefined
+  >({
     queryKey: ['single-product', slug],
     queryFn: () => getProduct(slug),
   });
 
-  /* const beko = koko.data?.map(item => item);
-  console.log(beko, 'product page'); */
-
-  //const {name} = data?[0]
-
   //@ts-ignore
   console.log(data?.[0]);
   //@ts-ignore
-  //const { name, image1 } = data;
+  const product = data?.[0];
+
   return (
     <Layout>
       <MetaTags
         /* @ts-ignore */
-        title={`${data?.[0].name} - ${SITE_NAME}`}
+        title={`${product?.name} - ${SITE_NAME}`}
         /* @ts-ignore */
-        description={data?.[0].description}
+        description={product?.description}
         schemaVariant="product"
         /* @ts-ignore */
-        image={data?.[0].image1}
+        image={product?.image1}
         /* @ts-ignore */
-        brand={data?.[0].brand}
+        brand={product?.brand}
         /* @ts-ignore */
-        price={data?.[0].price}
+        price={product?.price}
         validUntil="2023-12-31"
       />
       <div className="pt-16 p-4 md:p-8">
@@ -163,14 +97,56 @@ const Products = () => {
                       </div>
                     </li>
                   )) */}
+                <li>
+                  <div className="flex items-center">
+                    <a
+                      href={'/'}
+                      className="mr-2 text-sm font-medium text-gray-900"
+                    >
+                      {'Home'}
+                    </a>
+                    <svg
+                      width={16}
+                      height={20}
+                      viewBox="0 0 16 20"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      className="h-5 w-4 text-gray-300"
+                    >
+                      <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                    </svg>
+                  </div>
+                </li>
+                <li>
+                  <div className="flex items-center">
+                    <Link
+                      to={`/categories/${product?.category}`}
+                      className="mr-2 text-sm font-medium text-gray-900"
+                    >
+                      {product?.category}
+                    </Link>
+                    <svg
+                      width={16}
+                      height={20}
+                      viewBox="0 0 16 20"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      className="h-5 w-4 text-gray-300"
+                    >
+                      <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                    </svg>
+                  </div>
+                </li>
                 <li className="text-sm">
                   <a
-                    href={product.href}
+                    href={product?.href}
                     aria-current="page"
                     className="font-medium text-gray-500 hover:text-gray-600"
                   >
                     {/* @ts-ignore */}
-                    {data?.[0].name}
+                    {product?.name}
                   </a>
                 </li>
               </ol>
@@ -181,22 +157,22 @@ const Products = () => {
               <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
                 <img
                   /*  @ts-ignore  */
-                  src={data?.[0].image1}
+                  src={product?.image1}
                   /*  @ts-ignore  */
-                  alt={data?.[0].name}
+                  alt={product?.name}
                   /*  @ts-ignore  */
-                  title={data?.[0].name}
+                  title={product?.name}
                   className="w-full object-cover object-center"
                 />
               </div>
               <div className="lg:pr-8 p-8">
                 <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-4 mt-4">
                   {/* @ts-ignore */}
-                  {data?.[0].name}
+                  {product?.name}
                 </h1>
                 <p className="text-3xl tracking-tight text-gray-900">
                   {/* @ts-ignore */}
-                  {data?.[0].price}
+                  {product?.price}
                 </p>
                 <div className="py-10 lg:col-span-2 lg:col-start-1 lg:pt-6 lg:pb-16 lg:pr-8">
                   {/* Description and details */}
@@ -206,19 +182,27 @@ const Products = () => {
                     <div className="space-y-6">
                       <p className="text-base text-gray-900">
                         {/* @ts-ignore */}
-                        {data?.[0].description}
+                        {product?.description}
                       </p>
                     </div>
                   </div>
                 </div>
                 <div className="mt-[40px]">
-                  <Button
-                    variant="secondary"
-                    width="full"
-                    onClick={() => console.log('Get offer')}
+                  {/* @ts-ignore */}
+                  <a
+                    href={`${product?.referralUrl}`}
+                    type="button"
+                    className="py-3 px-8 text-base w-full items-center justify-center text-center md:px-4  bg-rose-300 transition shadow-5px hover:shadow-none  inline-block whitespace-nowrap border-black text-black border-2 font-bold hover:bg-rose-400"
                   >
                     Get offer
-                  </Button>
+                  </a>
+                  {/*  <Button
+                    variant="secondary"
+                    width="full"
+                    onClick={LinkToReferral}
+                  >
+                    Get offer
+                  </Button> */}
                 </div>
                 <div className="text-gray-500 mt-2 text-sm text-center">
                   <p>

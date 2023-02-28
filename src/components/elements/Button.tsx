@@ -28,6 +28,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={`${variants[variant]} ${widthClasses[width]}`}
       onClick={onClick}
+      type="button"
     >
       {children}
     </button>

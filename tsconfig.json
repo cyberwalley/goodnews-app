@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "src/api/useContentful.js"]
+  "include": ["src", "src/api/useContentful.js", "src/api/products.js", "functions/contentful/getProducts.js"]
 }

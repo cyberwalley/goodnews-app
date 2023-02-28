@@ -1,9 +1,8 @@
-//require('dotenv').config();
 import { createClient } from 'contentful';
 const useContentful = () => {
   const client = createClient({
-    space: 'poz3a9a6aokc',
-    accessToken: 'bJ2jt9efuWw6oPLhlphI8Uub-SKffJ0n1kF_6_1TYZw',
+    space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+    accessToken: process.env.REACT_APP_CONTENTFUL_API_KEY,
     host: 'cdn.contentful.com',
   });
 
@@ -41,8 +40,6 @@ const useContentful = () => {
           ...item.fields,
         };
       });
-
-      //const sanitizeEntries = entry.items[0];
       return sanitizeEntry;
     } catch (error) {
       console.error(error);

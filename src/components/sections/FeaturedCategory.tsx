@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { getProducts } from '../../api/products';
-import ProductCard from '../cards/ProductCard';
-import Filters from '../elements/Filters';
+//import { getProducts } from '../../../functions/contentful/products';
+//import ProductCard from '../cards/ProductCard';
+//import Filters from '../elements/Filters';
 import Heading from '../elements/Heading';
 import Section from '../elements/Section';
 import ProductGrid from '../Product/ProductGrid';
@@ -27,7 +27,7 @@ interface FeaturedCategoryProps {
 }
 
 //@ts-ignore
-const FeaturedCategory:FC<FeaturedCategoryProps> = ({
+const FeaturedCategory: FC<FeaturedCategoryProps> = ({
   products,
   heading,
   loading,
