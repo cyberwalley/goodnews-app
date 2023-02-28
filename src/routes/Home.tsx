@@ -27,9 +27,7 @@ const Home = () => {
     queryFn: getCampaigns,
   });
 
-  //console.log(campaigns, 'campaigns');
-
-  console.log(process.env.REACT_APP_CONTENTFUL_SPACE_ID, process.env.REACT_APP_CONTENTFUL_API_KEY, 'hello');
+  //console.log(campaigns, 'campaigns')
   return (
     <Layout>
       <MetaTags

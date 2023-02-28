@@ -37,6 +37,7 @@ const Campaign: FC<CampaignProps> = ({ heading, campaign, loading }) => {
               referralUrl,
             }) => (
               <CampaignCard
+                key={id}
                 id={id}
                 title={title}
                 subtitle={subtitle}
@@ -53,6 +54,6 @@ const Campaign: FC<CampaignProps> = ({ heading, campaign, loading }) => {
   );
 };
 
-Campaign.displayName = 'Deals';
+Campaign.displayName = 'Campaign';
 
 export default Campaign;
