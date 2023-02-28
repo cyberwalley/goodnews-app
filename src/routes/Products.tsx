@@ -46,8 +46,6 @@ const Products = () => {
   });
 
   //@ts-ignore
-  console.log(data?.[0]);
-  //@ts-ignore
   const product = data?.[0];
 
   return (
