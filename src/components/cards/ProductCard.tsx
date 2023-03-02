@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { handleize } from '../../libs/utils';
 import Button from '../elements/Button';
 
 interface ProductCardProps {
@@ -28,7 +27,6 @@ const ProductCard: FC<ProductCardProps> = ({
   createdAt,
   slug,
 }) => {
-  //const formattedTitle = handleize(title);
 
   return (
     <Link to={`products/${slug}`} state={{ id, slug }}>

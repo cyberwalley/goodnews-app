@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import MediaCard from '../components/cards/MediaCard';
 import Heading from '../components/elements/Heading';
 import useContentful from '../api/useContentful';

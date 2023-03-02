@@ -1,28 +1,23 @@
 import React, { FC } from 'react';
 import ProductCard from '../cards/ProductCard';
 import Filters from '../elements/Filters';
+import Grid from '../elements/Grid';
 
 type productGriptType = { [key: string]: string };
 interface ProductGridProps {
-  /* collection: Array<{
-    id: string;
-    title: string;
-    price: string;
-    seller: string;
-    published: boolean;
-    categoryTitle: string;
-    image1: string;
-    comparedAtPrice: string;
-    discount: string;
-    createdAt?: string;
-    sellerName?: string[];
-  }>; */
   collection: productGriptType[] | undefined;
-  loading: boolean;
+  loading?: boolean;
+  success?: boolean;
 }
 //@ts-ignore
-const ProductGrid: FC<ProductGridProps> = ({ collection, loading }) => {
+const ProductGrid: FC<ProductGridProps> = ({
+  collection,
+  loading,
+  success,
+}) => {
+
   if (!collection || loading) return <>Loading...</>;
+
   return (
     <>
       <div className="bg-white border-2 shadow-3xl border-black">
@@ -30,7 +25,7 @@ const ProductGrid: FC<ProductGridProps> = ({ collection, loading }) => {
           <Filters />
         </div>
         <div className="px-8 mx-auto py-6 md:py-8 lg:py-8  ">
-          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
+          <Grid>
             {collection &&
               collection.map(
                 ({
@@ -56,7 +51,7 @@ const ProductGrid: FC<ProductGridProps> = ({ collection, loading }) => {
                   />
                 ),
               )}
-          </div>
+          </Grid>
         </div>
       </div>
     </>

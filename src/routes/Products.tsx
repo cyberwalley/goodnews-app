@@ -1,54 +1,31 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
-import React, { FC, useEffect, useState } from 'react';
+import React from 'react';
 
 import { Link, useLocation, useParams } from 'react-router-dom';
 import Layout from '../global/Layout';
-
-import { StarIcon } from '@heroicons/react/20/solid';
-import { RadioGroup } from '@headlessui/react';
-import Button from '../components/elements/Button';
 import MetaTags from '../global/MetaTags';
 import { SITE_NAME, SITE_TWITTER_URL } from '../libs/constants';
-import { getProduct, getProducts } from '../api/products';
 import { useQuery } from '@tanstack/react-query';
 import useContentful from '../api/useContentful';
+import NotFound from './NotFound';
 
 const Products = () => {
   const location = useLocation();
   const { handle } = useParams<{ handle: string }>();
 
-  /* const { data, isLoading, isSuccess } = useQuery({
-    queryKey: ['products on product page'],
-    queryFn: getProducts,
-  });
-(slug)
-  const productz =
-    data && data[0].filter((product: any) => (product.title = 'product1'));
-  console.log(productz, 'product');
-  const { title, price, description, image, id } = productz[0]; */
-  /* const currentHandle = handle || location.pathname;
-
-  const { data, isLoading, isSuccess } = useQuery({
-    queryKey: ['products on product page', currentHandle.replace(/-/g, ' ')],
-    queryFn: getProduct,
-  }); */
-
   const slug = handle || location.state.slug;
   const { getProduct } = useContentful();
 
-  //const [product, setProduct] = useState();
   type productGriptType = { [key: string]: string };
-  const { data, isLoading, isSuccess } = useQuery<
-    productGriptType[] | undefined
-  >({
+  const { data } = useQuery<productGriptType[] | undefined>({
     queryKey: ['single-product', slug],
     queryFn: () => getProduct(slug),
   });
 
   //@ts-ignore
-  console.log(data?.[0]);
-  //@ts-ignore
   const product = data?.[0];
+
+  if (data?.length === 0 ) return <NotFound />;
 
   return (
     <Layout>
@@ -74,37 +51,14 @@ const Products = () => {
                 role="list"
                 className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
               >
-                {/* products?.breadcrumbs?.map(breadcrumb => (
-                    <li key={breadcrumb.id}>
-                      <div className="flex items-center">
-                        <a
-                          href={breadcrumb.href}
-                          className="mr-2 text-sm font-medium text-gray-900"
-                        >
-                          {breadcrumb.name}
-                        </a>
-                        <svg
-                          width={16}
-                          height={20}
-                          viewBox="0 0 16 20"
-                          fill="currentColor"
-                          xmlns="http://www.w3.org/2000/svg"
-                          aria-hidden="true"
-                          className="h-5 w-4 text-gray-300"
-                        >
-                          <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                        </svg>
-                      </div>
-                    </li>
-                  )) */}
                 <li>
                   <div className="flex items-center">
-                    <a
-                      href={'/'}
+                    <Link
+                      to={'/'}
                       className="mr-2 text-sm font-medium text-gray-900"
                     >
-                      {'Home'}
-                    </a>
+                      Home
+                    </Link>
                     <svg
                       width={16}
                       height={20}
@@ -174,19 +128,6 @@ const Products = () => {
                   {/* @ts-ignore */}
                   {product?.price}
                 </p>
-                <div className="py-10 lg:col-span-2 lg:col-start-1 lg:pt-6 lg:pb-16 lg:pr-8">
-                  {/* Description and details */}
-                  <div>
-                    <h3 className="sr-only">Description</h3>
-
-                    <div className="space-y-6">
-                      <p className="text-base text-gray-900">
-                        {/* @ts-ignore */}
-                        {product?.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
                 <div className="mt-[40px]">
                   {/* @ts-ignore */}
                   <a
@@ -210,6 +151,20 @@ const Products = () => {
                     affilate commission.
                   </p>
                 </div>
+                <div className="py-10 lg:col-span-2 lg:col-start-1 lg:pt-6 lg:pb-16 lg:pr-8">
+                  {/* Description and details */}
+                  <div>
+                    <h3 className="sr-only">Description</h3>
+
+                    <div className="space-y-6">
+                      <p className="text-base text-gray-900">
+                        {/* @ts-ignore */}
+                        {product?.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="flex flex-row gap-x-4 md:gap-x-6 justify-center mt-10">
                   <Link
                     to={SITE_TWITTER_URL}

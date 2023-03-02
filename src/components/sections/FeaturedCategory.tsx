@@ -1,7 +1,4 @@
 import React, { FC } from 'react';
-//import { getProducts } from '../../../functions/contentful/products';
-//import ProductCard from '../cards/ProductCard';
-//import Filters from '../elements/Filters';
 import Heading from '../elements/Heading';
 import Section from '../elements/Section';
 import ProductGrid from '../Product/ProductGrid';
@@ -9,19 +6,6 @@ import ProductGrid from '../Product/ProductGrid';
 type productGriptType = { [key: string]: string };
 interface FeaturedCategoryProps {
   heading: string;
-  /*  products: Array<{
-    id: string;
-    title: string;
-    price: string;
-    seller: string;
-    published: boolean;
-    categoryTitle: string;
-    image1: string;
-    comparedAtPrice: string;
-    discount: string;
-    createdAt?: string;
-    sellerName?: string[];
-  }>;  */
   products: productGriptType[] | undefined;
   loading: boolean;
 }

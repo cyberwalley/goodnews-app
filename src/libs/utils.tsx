@@ -8,3 +8,7 @@ export function handleize(text: string) {
     .replace(/^-+/, '') // Trim - from start of text
     .replace(/-+$/, ''); // Trim - from end of text
 }
+
+export function capitalize(text: string) {
+  return text.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
+}

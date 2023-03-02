@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import CampaignCard from '../cards/CampaignCard';
+import Grid from '../elements/Grid';
 import Heading from '../elements/Heading';
 import Section from '../elements/Section';
 
@@ -25,7 +26,7 @@ const Campaign: FC<CampaignProps> = ({ heading, campaign, loading }) => {
     <Section>
       <Heading>{heading}</Heading>
       <div className="w-full gap-4 md:gap-8 grid py-6 md:py-8 lg:py-12 border-primary/05 border-2 shadow-3xl border-black bg-white mb-10">
-        <div className="px-8 mt-6 space-y-12 lg:grid lg:grid-cols-3 gap-8 lg:space-y-0">
+        <Grid layout="campaigns">
           {campaign?.map(
             ({
               id,
@@ -48,7 +49,7 @@ const Campaign: FC<CampaignProps> = ({ heading, campaign, loading }) => {
               />
             ),
           )}
-        </div>
+        </Grid>
       </div>
     </Section>
   );

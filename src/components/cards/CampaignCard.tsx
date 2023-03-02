@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 interface CampaignCardProps {
   id: string;
-  title: string;
+  title?: string;
   date?: string;
-  imageSrc: string;
-  href: string;
+  imageSrc?: string;
+  href?: string;
   description?: string;
-  slug: string;
-  subtitle: string;
-  vendor: string;
+  slug?: string;
+  subtitle?: string;
+  vendor?: string;
 }
 
 const CampaignCard: FC<CampaignCardProps> = ({
@@ -35,10 +35,8 @@ const CampaignCard: FC<CampaignCardProps> = ({
         </div>
         <div className="p-4">
           <h3 className="mt-6 text-sm text-gray-500">
-            <a href={href}>
-              <span className="absolute inset-0" />
-              {vendor}
-            </a>
+            <span className="absolute inset-0" />
+            {vendor}
           </h3>
           <p className="text-base font-semibold text-gray-900 mt-2">{title}</p>
           <p className="text-sm text-gray-700 text-[14px] mt-2 overflow-hidden whitespace-wrap line-clamp-2">
