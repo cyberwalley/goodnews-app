@@ -25,6 +25,26 @@ const useContentful = () => {
     }
   };
 
+  const getProductsByCategory = async slug => {
+    try {
+      const entries = await client.getEntries({
+        content_type: 'product',
+        select: 'fields',
+        'fields.category': slug,
+      });
+      const sanitizeEntries = entries.items.map(item => {
+        const id = item.sys.id;
+        return {
+          id,
+          ...item.fields,
+        };
+      });
+      return sanitizeEntries;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const getProduct = async slug => {
     try {
       const entry = await client.getEntries({
@@ -67,7 +87,32 @@ const useContentful = () => {
     }
   };
 
-  return { getProducts, getProduct, getCampaigns };
+  const getCategoryList = async () => {
+    try {
+      const entries = await client.getEntries({
+        content_type: 'categories',
+        select: 'fields',
+      });
+      const sanitizeEntries = entries.items.map(item => {
+        const id = item.sys.id;
+        return {
+          id,
+          ...item.fields,
+        };
+      });
+      return sanitizeEntries;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return {
+    getProducts,
+    getProduct,
+    getCampaigns,
+    getProductsByCategory,
+    getCategoryList,
+  };
 };
 
 export default useContentful;

@@ -4,9 +4,11 @@ import About from './About';
 import Blog from './Blog';
 import Campaigns from './Campaigns';
 import Categories from './Categories';
+import CategoryList from './CategoryList';
 import Home from './Home';
 import NotFound from './NotFound';
 import Pages from './Pages';
+import ProductList from './ProductList';
 import Products from './Products';
 
 const Router = () => {
@@ -19,6 +21,9 @@ const Router = () => {
       <Route path="/campaigns/:handle" element={<Campaigns />} />
       <Route path="/pages/:handle" element={<Pages />} />
       <Route path="/blog/:handle" element={<Blog />} />
+      <Route path="/categories" element={<CategoryList/>} />
+      <Route path="/products" element={<CategoryList/>} />
+      <Route path="/products/all" element={<ProductList/>} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

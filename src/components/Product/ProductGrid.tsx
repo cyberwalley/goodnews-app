@@ -5,25 +5,19 @@ import Grid from '../elements/Grid';
 
 type productGriptType = { [key: string]: string };
 interface ProductGridProps {
-  /* collection: Array<{
-    id: string;
-    title: string;
-    price: string;
-    seller: string;
-    published: boolean;
-    categoryTitle: string;
-    image1: string;
-    comparedAtPrice: string;
-    discount: string;
-    createdAt?: string;
-    sellerName?: string[];
-  }>; */
   collection: productGriptType[] | undefined;
-  loading: boolean;
+  loading?: boolean;
+  success?: boolean;
 }
 //@ts-ignore
-const ProductGrid: FC<ProductGridProps> = ({ collection, loading }) => {
+const ProductGrid: FC<ProductGridProps> = ({
+  collection,
+  loading,
+  success,
+}) => {
+
   if (!collection || loading) return <>Loading...</>;
+
   return (
     <>
       <div className="bg-white border-2 shadow-3xl border-black">
