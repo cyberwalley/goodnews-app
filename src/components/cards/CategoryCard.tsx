@@ -24,6 +24,7 @@ const CategoryCard: FC<CategoriesCardProps> = ({ title, image, slug }) => {
                 className=" w-full object-contain object-center lg:w-full"
                 alt="title"
                 title="title"
+                loading="lazy"
                 src={image}
               />
             </div>

@@ -7,6 +7,7 @@ const PostCard = () => {
             className="h-56 w-full object-cover"
             src="https://images.unsplash.com/photo-1517436073-7f7a9d8b3b1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
             alt="blog"
+            loading="lazy"
         />
         <div className="px-6 py-4">
             <h1 className="text-xl font-semibold text-gray-800">

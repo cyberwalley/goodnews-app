@@ -21,13 +21,13 @@ const Footer = () => {
             />
           </Link>
           <div className="flex w-full text-sm font-polysans flex-col items-center justify-between gap-y-8 md:ml-auto md:w-auto md:gap-x-10 md:flex-row lg:leading-10">
-            <Link to="/about" className="hover:cursor-pointer">
+            <Link to="pages/about" className="hover:cursor-pointer">
               About us
             </Link>
-            <Link to="/terms" className="hover:cursor-pointer">
+            <Link to="pages/terms" className="hover:cursor-pointer">
               Terms of Service
             </Link>
-            <Link to="/privacy" className="hover:cursor-pointer">
+            <Link to="pages/privacy" className="hover:cursor-pointer">
               Privacy Policy
             </Link>
           </div>

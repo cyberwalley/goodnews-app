@@ -12,14 +12,21 @@ import NotFound from './NotFound';
 const Categories = () => {
   const { handle } = useParams<{ handle: string }>();
   const location = useLocation();
-  const { getProductsByCategory } = useContentful();
+  const { getProductsByCategory, getCategory } = useContentful();
 
   const slug = handle || location.state.slug;
   const capitalizedSlug = capitalize(slug);
 
+  type productGriptType = { [key: string]: string };
+
   const { data, isLoading } = useQuery({
     queryKey: ['Category List', capitalizedSlug],
     queryFn: () => getProductsByCategory(capitalizedSlug),
+  });
+
+  const { data: category } = useQuery<productGriptType[] | undefined>({
+    queryKey: ['Category description', slug],
+    queryFn: () => getCategory(slug),
   });
 
   if (data?.length === 0) return <NotFound />;
@@ -32,8 +39,7 @@ const Categories = () => {
             {capitalizedSlug}
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
-            Find Exclusive Discounts and Promotions from Top Retailers and
-            Brands at Our One-Stop Destination for Savings
+            {category?.[0].description}
           </p>
         </div>
       </header>

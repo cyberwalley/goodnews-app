@@ -25,7 +25,7 @@ const Products = () => {
   //@ts-ignore
   const product = data?.[0];
 
-  if (data?.length === 0 ) return <NotFound />;
+  if (data?.length === 0) return <NotFound />;
 
   return (
     <Layout>
@@ -116,6 +116,7 @@ const Products = () => {
                   alt={product?.name}
                   /*  @ts-ignore  */
                   title={product?.name}
+                  loading="lazy"
                   className="w-full object-cover object-center"
                 />
               </div>
