@@ -106,12 +106,32 @@ const useContentful = () => {
     }
   };
 
+  const getMainMenuItems = async () => {
+    try {
+      const entries = await client.getEntries({
+        content_type: 'mainMenu',
+        select: 'fields',
+      });
+      const sanitizeEntries = entries.items.map(item => {
+        const id = item.sys.id;
+        return {
+          id,
+          ...item.fields,
+        };
+      });
+      return sanitizeEntries;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return {
     getProducts,
     getProduct,
     getCampaigns,
     getProductsByCategory,
     getCategoryList,
+    getMainMenuItems,
   };
 };
 
