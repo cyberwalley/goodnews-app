@@ -51,6 +51,7 @@ const ProductCard: FC<ProductCardProps> = ({
             className="h-[200px] w-full object-contain object-center lg:w-full aspect-[4/5]"
             sizes="320"
             height="400"
+            loading="lazy"
             decoding="async"
           />
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 const Hero = (): JSX.Element => {
   return (
     <div className="isolate mb-10">
@@ -16,12 +17,12 @@ const Hero = (): JSX.Element => {
             </div>
 
             <div className="mt-10 flex gap-x-4 sm:justify-center">
-              <a
-                className=" md:px-4 px-6 py-2 bg-rose-300 transition shadow-5px hover:shadow-none hover:translate-x-[-5px] hover:translate-y-[5px] inline-block whitespace-nowrap border-black border-2 shadow-3xl text-black font-bold"
-                href="/about"
+              <Link
+                className="md:px-4 px-6 py-2 bg-rose-300 transition shadow-5px hover:shadow-none hover:translate-x-[-5px] hover:translate-y-[5px] inline-block whitespace-nowrap border-black border-2 shadow-3xl text-black font-bold"
+                to={'pages/about'}
               >
                 About us
-              </a>
+              </Link>
             </div>
             <div className="hidden sm:mb-8 sm:flex sm:justify-center mt-10">
               <div className="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
