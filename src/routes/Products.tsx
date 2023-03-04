@@ -9,6 +9,8 @@ import { useQuery } from '@tanstack/react-query';
 import useContentful from '../api/useContentful';
 import NotFound from './NotFound';
 import { marked } from 'marked';
+import Border from '../components/sections/Border';
+import NativeAds from '../libs/NativeAds';
 
 const Products = () => {
   const location = useLocation();
@@ -81,7 +83,7 @@ const Products = () => {
                 <li>
                   <div className="flex items-center">
                     <Link
-                      to={`/categories/${product?.category}`}
+                      to={`/categories/${product?.category?.toLowerCase()}`}
                       className="mr-2 text-sm font-medium text-gray-900"
                     >
                       {product?.category}
@@ -193,6 +195,12 @@ const Products = () => {
             </div>
           </div>
         </div>
+        <Border>
+          <div className="px-10 py-10">
+            <div className="text-black text-2xl"> You may also like these</div>
+            <NativeAds category={product?.category} />
+          </div>
+        </Border>
       </div>
     </Layout>
   );
