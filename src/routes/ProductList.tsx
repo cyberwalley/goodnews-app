@@ -4,14 +4,18 @@ import ProductGrid from '../components/Product/ProductGrid';
 import Layout from '../global/Layout';
 import { useQuery } from '@tanstack/react-query';
 import useContentful from '../api/useContentful';
+import NotFound from './NotFound';
 
 const ProductList = () => {
-    const { getProducts} = useContentful();
+  const { getProducts } = useContentful();
   const { data, isLoading } = useQuery({
     queryKey: ['products'],
     queryFn: getProducts,
   });
 
+  if (isLoading) return <div className="text-black">loading</div>;
+
+  if (!data || data?.length === 0) return <NotFound />;
   return (
     <Layout>
       <header>

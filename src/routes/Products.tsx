@@ -8,6 +8,7 @@ import { SITE_NAME, SITE_TWITTER_URL } from '../libs/constants';
 import { useQuery } from '@tanstack/react-query';
 import useContentful from '../api/useContentful';
 import NotFound from './NotFound';
+import { marked } from 'marked';
 
 const Products = () => {
   const location = useLocation();
@@ -17,7 +18,7 @@ const Products = () => {
   const { getProduct } = useContentful();
 
   type productGriptType = { [key: string]: string };
-  const { data } = useQuery<productGriptType[] | undefined>({
+  const { data, isLoading } = useQuery<productGriptType[] | undefined>({
     queryKey: ['single-product', slug],
     queryFn: () => getProduct(slug),
   });
@@ -26,6 +27,11 @@ const Products = () => {
   const product = data?.[0];
 
   if (data?.length === 0) return <NotFound />;
+
+  if (isLoading) return <div className="text-black">loading</div>;
+
+  /* @ts-ignore */
+  const markedDescription = marked(product?.description);
 
   return (
     <Layout>
@@ -149,7 +155,7 @@ const Products = () => {
                 <div className="text-gray-500 mt-2 text-sm text-center">
                   <p>
                     When you buy through links on our site, we may earn an
-                    affilate commission.
+                    affiliate commission.
                   </p>
                 </div>
                 <div className="py-10 lg:col-span-2 lg:col-start-1 lg:pt-6 lg:pb-16 lg:pr-8">
@@ -158,10 +164,10 @@ const Products = () => {
                     <h3 className="sr-only">Description</h3>
 
                     <div className="space-y-6">
-                      <p className="text-base text-gray-900">
-                        {/* @ts-ignore */}
-                        {product?.description}
-                      </p>
+                      <div
+                        className="text-base text-gray-900"
+                        dangerouslySetInnerHTML={{ __html: markedDescription }}
+                      />
                     </div>
                   </div>
                 </div>

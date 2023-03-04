@@ -6,6 +6,7 @@ import Layout from '../global/Layout';
 import { capitalize } from '../libs/utils';
 import { useQuery } from '@tanstack/react-query';
 import NotFound from './NotFound';
+import { marked } from 'marked';
 
 const Pages = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -17,12 +18,17 @@ const Pages = () => {
 
   type productGriptType = { [key: string]: string };
 
-  const { data } = useQuery<productGriptType[] | undefined>({
+  const { data, isLoading } = useQuery<productGriptType[] | undefined>({
     queryKey: ['Pages', slug],
     queryFn: () => getPage(slug),
   });
 
   if (data?.length === 0) return <NotFound />;
+
+  if (isLoading) return <div className="text-black">loading</div>;
+
+  /* @ts-ignore */
+  const markedContent = marked.parse(data?.[0].content);
 
   return (
     <Layout>
@@ -35,7 +41,10 @@ const Pages = () => {
       </header>
       <Section>
         <div className="bg-white border-2 shadow-3xl border-black text-black">
-          <div className="py-[4rem] px-[2rem]">{data?.[0].content}</div>
+          <div
+            className="py-[4rem] px-[2rem]"
+            dangerouslySetInnerHTML={{ __html: markedContent }}
+          />
         </div>
       </Section>
     </Layout>

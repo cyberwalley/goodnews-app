@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import useContentful from '../api/useContentful';
 
@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { capitalize } from '../libs/utils';
 import ProductGrid from '../components/Product/ProductGrid';
 import NotFound from './NotFound';
+import { marked } from 'marked';
 
 const Categories = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -17,19 +18,23 @@ const Categories = () => {
   const slug = handle || location.state.slug;
   const capitalizedSlug = capitalize(slug);
 
-  type productGriptType = { [key: string]: string };
-
   const { data, isLoading } = useQuery({
     queryKey: ['Category List', capitalizedSlug],
     queryFn: () => getProductsByCategory(capitalizedSlug),
   });
 
-  const { data: category } = useQuery<productGriptType[] | undefined>({
+  const { data: category, isLoading: isCategoryLoading } = useQuery({
     queryKey: ['Category description', slug],
     queryFn: () => getCategory(slug),
   });
 
-  if (data?.length === 0) return <NotFound />;
+  console.log(category, 'New category');
+
+  if (isCategoryLoading) return <div className="text-black">loading</div>;
+
+  if (!category || category?.length === 0) return <NotFound />;
+
+  const markedDescription = marked.parse(category?.[0].description || null);
 
   return (
     <Layout>
@@ -39,12 +44,20 @@ const Categories = () => {
             {capitalizedSlug}
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
-            {category?.[0].description}
+            {category?.[0].caption}
           </p>
         </div>
       </header>
       <Section>
         <ProductGrid collection={data} loading={isLoading} />
+      </Section>
+      <Section>
+        <div className="bg-white border-2 shadow-3xl border-black text-black mt-20">
+          <div
+            className="py-[2rem] px-[2rem] text-sm"
+            dangerouslySetInnerHTML={{ __html: markedDescription }}
+          />
+        </div>
       </Section>
     </Layout>
   );
