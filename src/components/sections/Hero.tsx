@@ -32,6 +32,26 @@ const Hero = (): JSX.Element => {
                 </span>
               </div>
             </div>
+            <div>
+              {/* @ts-ignore */}
+              <script
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4351149846967190"
+                crossOrigin="anonymous"
+              ></script>
+              {/*<!-- GetCrazyOffers - Horizontal Ads -->*/}
+              <ins
+                className="adsbygoogle"
+                style={{ display: 'block' }}
+                data-ad-client="ca-pub-4351149846967190"
+                data-ad-slot="9031476314"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+              ></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
             <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"></div>
           </div>
         </div>
