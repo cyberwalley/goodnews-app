@@ -4,6 +4,7 @@ import CategoryGrid from '../components/Category/CategoryGrid';
 import Section from '../components/elements/Section';
 import Layout from '../global/Layout';
 import { useQuery } from '@tanstack/react-query';
+import NotFound from './NotFound';
 
 const CategoryList = () => {
   const { getCategoryList } = useContentful();
@@ -13,6 +14,11 @@ const CategoryList = () => {
     queryFn: getCategoryList,
   });
   console.log(categories, 'categories');
+
+  if (isCategoryLoading) return <div className="text-black">loading</div>;
+
+  if (!categories || categories?.length === 0) return <NotFound />;
+
   return (
     <Layout>
       <header>

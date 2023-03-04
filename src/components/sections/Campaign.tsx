@@ -22,6 +22,7 @@ interface CampaignProps {
 
 const Campaign: FC<CampaignProps> = ({ heading, campaign, loading }) => {
   if (!campaign || loading) return <>Loading...</>;
+
   return (
     <Section>
       <Heading>{heading}</Heading>
