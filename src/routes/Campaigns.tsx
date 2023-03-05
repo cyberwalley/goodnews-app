@@ -7,26 +7,39 @@ import CtaSection from '../components/sections/CtaSection';
 import { capitalize } from '../libs/utils';
 import { useQuery } from '@tanstack/react-query';
 import Layout from '../global/Layout';
+import NotFound from './NotFound';
 
 const Campaigns = () => {
   const { handle } = useParams<{ handle: string }>();
   const location = useLocation();
-  const { getProductsByCampaign } = useContentful();
+  const { getProductsByCampaign, getCampaign } = useContentful();
 
   const slug = handle || location.state.slug;
-  const capitalizedSlug = capitalize(slug);
+  const capitalizedSlug = capitalize(slug).replace(/-/g, ' ');
 
-  const { data, isLoading } = useQuery({
+  console.log(capitalizedSlug, 'campaign - capitalizedSlug');
+
+  const { data: products, isLoading: isProductsLoading } = useQuery({
     queryKey: ['Products by campaign', capitalizedSlug],
     queryFn: () => getProductsByCampaign(capitalizedSlug),
   });
 
+  const { data: campaign, isLoading: isCampaignsLoading } = useQuery({
+    queryKey: ['Campaign', slug],
+    queryFn: () => getCampaign(slug),
+  });
+  console.log(campaign, ' new campaign');
+
+  if (isCampaignsLoading) return <div className="text-black">loading</div>;
+
+  if (!products || products?.length === 0) return <NotFound />;
+
   return (
     <>
-      <CtaSection />
+      <CtaSection campaign={campaign} loading={isCampaignsLoading} />
       <Layout>
         <Section>
-          <ProductGrid collection={data} loading={isLoading} />
+          <ProductGrid collection={products} loading={isProductsLoading} />
         </Section>
       </Layout>
     </>

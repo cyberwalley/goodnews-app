@@ -9,8 +9,9 @@ import { useQuery } from '@tanstack/react-query';
 import useContentful from '../api/useContentful';
 import NotFound from './NotFound';
 import { marked } from 'marked';
-import Border from '../components/sections/Border';
+import Border from '../components/elements/Border';
 import NativeAds from '../libs/NativeAds';
+import { handleize } from '../libs/utils';
 
 const Products = () => {
   const location = useLocation();
@@ -34,7 +35,9 @@ const Products = () => {
 
   /* @ts-ignore */
   const markedDescription = marked(product?.description);
-
+  /* @ts-ignore */
+  const handledCategory = handleize(product?.category);
+  console.log(handledCategory, 'handledCategory');
   return (
     <Layout>
       <MetaTags
@@ -83,7 +86,7 @@ const Products = () => {
                 <li>
                   <div className="flex items-center">
                     <Link
-                      to={`/categories/${product?.category?.toLowerCase()}`}
+                      to={`/categories/${handledCategory}`}
                       className="mr-2 text-sm font-medium text-gray-900"
                     >
                       {product?.category}

@@ -10,6 +10,7 @@ import MetaTags from '../global/MetaTags';
 import { useQuery } from '@tanstack/react-query';
 //import { getProducts } from '../api/products';
 import FeaturedCategory from '../components/sections/FeaturedCategory';
+import LoadingProduct from '../components/elements/LoadingProduct';
 //import { getProducts } from '../../functions/contentful/getProducts';
 ///require('dotenv').config();
 
@@ -37,7 +38,7 @@ const Home = () => {
       <Hero />
       {/* <Heading> Offers from your preferred Brands</Heading>
       <LogoImage /> */}
-    <Campaign
+      <Campaign
         heading="Trending deals"
         campaign={campaigns}
         loading={isCampaignLoading}

@@ -2,6 +2,9 @@ import React, { FC } from 'react';
 import ProductCard from '../cards/ProductCard';
 import Filters from '../elements/Filters';
 import Grid from '../elements/Grid';
+import Border from '../elements/Border';
+import Section from '../elements/Section';
+import LoadingProduct from '../elements/LoadingProduct';
 
 type productGriptType = { [key: string]: string };
 interface ProductGridProps {
@@ -15,12 +18,11 @@ const ProductGrid: FC<ProductGridProps> = ({
   loading,
   success,
 }) => {
-
-  if (!collection || loading) return <>Loading...</>;
+  if (!collection || loading) return <LoadingProduct />;
 
   return (
     <>
-      <div className="bg-white border-2 shadow-3xl border-black">
+      <Border>
         <div className="flex justify-center px-8 mt-6">
           <Filters />
         </div>
@@ -53,7 +55,7 @@ const ProductGrid: FC<ProductGridProps> = ({
               )}
           </Grid>
         </div>
-      </div>
+      </Border>
     </>
   );
 };

@@ -24,7 +24,7 @@ const Hero = (): JSX.Element => {
                 About us
               </Link>
             </div>
-            <div className="hidden sm:mb-8 sm:flex sm:justify-center mt-10">
+            <div className="sm:mb-8 sm:flex sm:justify-center mt-10">
               <div className="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                 <span className="text-gray-600">
                   When you buy through links on our site, we may earn an
