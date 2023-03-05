@@ -106,6 +106,27 @@ const useContentful = () => {
     }
   };
 
+  const getCampaign = async slug => {
+    try {
+      const entry = await client.getEntries({
+        content_type: 'campaign',
+        select: 'fields',
+        limit: 1,
+        'fields.slug': slug,
+      });
+      const sanitizeEntry = entry.items.map(item => {
+        const id = item.sys.id;
+        return {
+          id,
+          ...item.fields,
+        };
+      });
+      return sanitizeEntry;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const getCategoryList = async () => {
     try {
       const entries = await client.getEntries({
@@ -197,6 +218,7 @@ const useContentful = () => {
     getCategory,
     getPage,
     getProductsByCampaign,
+    getCampaign,
   };
 };
 

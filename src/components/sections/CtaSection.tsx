@@ -1,11 +1,28 @@
-import React from 'react';
+import { url } from 'inspector';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-const CtaSection = () => {
+interface CtaSectionProps {
+  campaign: string[] | undefined;
+  loading: boolean;
+}
+
+const CtaSection: FC<CtaSectionProps> = ({ campaign, loading }) => {
+  if (loading) return <>loading</>;
+
   return (
     <div>
       <div className="mx-auto w-full">
-        <div className="relative isolate overflow-hidden bg-gray-900 bg-no-repeat bg-auto md:bg-cover bg-center bg-[url('https://m.media-amazon.com/images/G/01/Associates/Marketing/0216_AIPWeekly_ViralTrendsBanner_Email_associates.png')] px-6 pt-16  sm:px-16  lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+        <div
+          style={{
+            /* @ts-ignore */
+            backgroundImage: `url(${campaign?.[0].campaignPosterUrl})`,
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+          }}
+          className="relative isolate overflow-hidden bg-gray-900 bg-no-repeat bg-auto md:bg-cover bg-center px-6 pt-16  sm:px-16  lg:flex lg:gap-x-20 lg:px-24 lg:pt-0"
+        >
           <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-16 lg:text-left">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Going Viral

@@ -9,6 +9,7 @@ import { capitalize } from '../libs/utils';
 import ProductGrid from '../components/Product/ProductGrid';
 import NotFound from './NotFound';
 import { marked } from 'marked';
+import Spinner from '../components/elements/Spinner';
 
 const Categories = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -16,7 +17,9 @@ const Categories = () => {
   const { getProductsByCategory, getCategory } = useContentful();
 
   const slug = handle || location.state.slug;
-  const capitalizedSlug = capitalize(slug);
+  const capitalizedSlug = capitalize(slug).replace(/-/g, ' ');
+
+  console.log(capitalizedSlug, 'real -capitalizedSlug');
 
   const { data, isLoading } = useQuery({
     queryKey: ['Category List', capitalizedSlug],
@@ -30,7 +33,12 @@ const Categories = () => {
 
   console.log(category, 'New category');
 
-  if (isCategoryLoading) return <div className="text-black">loading</div>;
+  if (isCategoryLoading)
+    return (
+      <div className="text-black text-center mx-auto mt-[20vh] mb-0 h-[100vh]">
+        <Spinner />
+      </div>
+    );
 
   if (!category || category?.length === 0) return <NotFound />;
 
