@@ -5,6 +5,7 @@ import Section from '../components/elements/Section';
 import Layout from '../global/Layout';
 import { useQuery } from '@tanstack/react-query';
 import NotFound from './NotFound';
+import Spinner from '../components/elements/Spinner';
 
 const CategoryList = () => {
   const { getCategoryList } = useContentful();
@@ -15,7 +16,13 @@ const CategoryList = () => {
   });
   console.log(categories, 'categories');
 
-  if (isCategoryLoading) return <div className="text-black">loading</div>;
+  if (isCategoryLoading) {
+    return (
+      <div className="text-black text-center mx-auto mt-[20vh] mb-0 h-[100vh]">
+        <Spinner />
+      </div>
+    );
+  }
 
   if (!categories || categories?.length === 0) return <NotFound />;
 

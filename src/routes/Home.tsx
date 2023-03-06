@@ -34,6 +34,7 @@ const Home = () => {
       <MetaTags
         title="Getdailyoffers.com"
         description="Find Exclusive Discounts and Promotions from Top Retailers and Brands at Our One-Stop Destination for Savings"
+        canonical={'/'}
       />
       <Hero />
       {/* <Heading> Offers from your preferred Brands</Heading>

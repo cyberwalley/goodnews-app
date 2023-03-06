@@ -24,14 +24,12 @@ const CtaSection: FC<CtaSectionProps> = ({ campaign, loading }) => {
           className="relative isolate overflow-hidden bg-gray-900 bg-no-repeat bg-auto md:bg-cover bg-center px-6 pt-16  sm:px-16  lg:flex lg:gap-x-20 lg:px-24 lg:pt-0"
         >
           <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-16 lg:text-left">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Going Viral
-              <br />
-              Start shopping now.
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
+            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Going Viral Start shopping now.
+            </h1>
+            <h2 className="mt-6 text-lg leading-8 text-gray-300">
               The hosttes product of the moment
-            </p>
+            </h2>
             <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
               <Link
                 to={'#'}

@@ -5,6 +5,7 @@ import Layout from '../global/Layout';
 import { useQuery } from '@tanstack/react-query';
 import useContentful from '../api/useContentful';
 import NotFound from './NotFound';
+import Spinner from '../components/elements/Spinner';
 
 const ProductList = () => {
   const { getProducts } = useContentful();
@@ -13,7 +14,13 @@ const ProductList = () => {
     queryFn: getProducts,
   });
 
-  if (isLoading) return <div className="text-black">loading</div>;
+  if (isLoading) {
+    return (
+      <div className="text-black text-center mx-auto mt-[20vh] mb-0 h-[100vh]">
+        <Spinner />
+      </div>
+    );
+  }
 
   if (!data || data?.length === 0) return <NotFound />;
   return (

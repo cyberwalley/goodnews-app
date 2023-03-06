@@ -12,6 +12,7 @@ import { marked } from 'marked';
 import Border from '../components/elements/Border';
 import NativeAds from '../libs/NativeAds';
 import { handleize } from '../libs/utils';
+import Spinner from '../components/elements/Spinner';
 
 const Products = () => {
   const location = useLocation();
@@ -31,7 +32,13 @@ const Products = () => {
 
   if (data?.length === 0) return <NotFound />;
 
-  if (isLoading) return <div className="text-black">loading</div>;
+  if (isLoading) {
+    return (
+      <div className="text-black text-center mx-auto mt-[20vh] mb-0 h-[100vh]">
+        <Spinner />
+      </div>
+    );
+  }
 
   /* @ts-ignore */
   const markedDescription = marked(product?.description);
@@ -53,6 +60,7 @@ const Products = () => {
         /* @ts-ignore */
         price={product?.price}
         validUntil="2023-12-31"
+        canonical={`/products/${slug}`}
       />
       <div className="pt-16 p-4 md:p-8">
         <div className="bg-white border-black border-2 shadow-3xl">
