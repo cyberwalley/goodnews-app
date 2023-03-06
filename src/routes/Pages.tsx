@@ -7,6 +7,7 @@ import { capitalize } from '../libs/utils';
 import { useQuery } from '@tanstack/react-query';
 import NotFound from './NotFound';
 import { marked } from 'marked';
+import MetaTags from '../global/MetaTags';
 
 const Pages = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -32,6 +33,11 @@ const Pages = () => {
 
   return (
     <Layout>
+      <MetaTags
+        title={capitalizedSlug}
+        description={markedContent}
+        canonical={`/${slug}`}
+      />
       <header>
         <div className="mx-auto max-w-3xl pt-20 pb-20 px-6 lg:px-8">
           <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl text-black">

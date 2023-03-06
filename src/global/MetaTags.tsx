@@ -22,6 +22,7 @@ interface MetaProps {
   price?: string;
   validUntil?: string;
   currency?: string;
+  canonical?: string;
 }
 
 const MetaTags: FC<MetaProps> = ({
@@ -35,6 +36,7 @@ const MetaTags: FC<MetaProps> = ({
   price,
   validUntil,
   currency,
+  canonical,
 }) => {
   return (
     <Helmet>
@@ -43,6 +45,7 @@ const MetaTags: FC<MetaProps> = ({
       <meta name="keywords" content={SITE_KEYWORDS} />
       <meta name="author" content={author} />
       <meta name="robots" content="index, follow" />
+      <link rel="canonical" href={canonical} />
       {/*  <meta
         name="google-site-verification"
         content={GOOGLE_SITE_VERIFICATION}

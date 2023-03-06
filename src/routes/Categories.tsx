@@ -10,6 +10,7 @@ import ProductGrid from '../components/Product/ProductGrid';
 import NotFound from './NotFound';
 import { marked } from 'marked';
 import Spinner from '../components/elements/Spinner';
+import MetaTags from '../global/MetaTags';
 
 const Categories = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -46,14 +47,19 @@ const Categories = () => {
 
   return (
     <Layout>
+      <MetaTags
+        title={`${capitalizedSlug} - Getdailyoffers.com`}
+        description={category?.[0]?.caption}
+        canonical={`/categories/${slug}`}
+      />
       <header>
         <div className="mx-auto max-w-3xl pt-20 pb-20 px-6 lg:px-8">
           <h1 className="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl text-black">
             {capitalizedSlug}
           </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
-            {category?.[0].caption}
-          </p>
+          <h2 className="mt-6 text-lg leading-8 text-gray-600 sm:text-center">
+            {category?.[0]?.caption}
+          </h2>
         </div>
       </header>
       <Section>
