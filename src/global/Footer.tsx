@@ -7,6 +7,8 @@ import {
   SITE_TWITTER_URL,
 } from '../libs/constants';
 
+import Logo from '../assets/images/getcrazyoffers-logo.svg';
+
 const Footer = () => {
   return (
     <div className="max-w-[81rem] mx-auto px-4 flex h-96 items-center md:h-36">
@@ -15,7 +17,7 @@ const Footer = () => {
           <Link to="/">
             <img
               className="h-7 md:h-8 hover:cursor-pointer"
-              src={SITE_LOGO}
+              src={Logo}
               alt={SITE_NAME}
               loading="lazy"
             />

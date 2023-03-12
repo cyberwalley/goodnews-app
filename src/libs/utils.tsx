@@ -12,3 +12,11 @@ export function handleize(text: string) {
 export function capitalize(text: string) {
   return text.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
 }
+
+export function cropText(text: string, count: number) {
+  return text?.slice(0, count) + '...';
+}
+
+export function formatDateRemoveTime(text: string | undefined) {
+  return text?.split('T')[0];
+}

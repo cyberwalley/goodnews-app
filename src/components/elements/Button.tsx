@@ -4,6 +4,7 @@ interface ButtonProps {
   children: React.ReactNode;
   width?: 'auto' | 'full';
   variant?: 'primary' | 'secondary';
+  type?: 'button' | 'submit' | 'reset' | undefined;
   onClick: () => void;
 }
 
@@ -11,6 +12,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   variant = 'primary',
   width = 'auto',
+  type,
   onClick,
 }) => {
   const baseButtonClasses =
@@ -28,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={`${variants[variant]} ${widthClasses[width]}`}
       onClick={onClick}
-      type="button"
+      type={type}
     >
       {children}
     </button>

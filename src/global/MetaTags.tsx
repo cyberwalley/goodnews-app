@@ -23,6 +23,8 @@ interface MetaProps {
   validUntil?: string;
   currency?: string;
   canonical?: string;
+  ratingValue?: string;
+  reviewCount?: string;
 }
 
 const MetaTags: FC<MetaProps> = ({
@@ -37,6 +39,8 @@ const MetaTags: FC<MetaProps> = ({
   validUntil,
   currency,
   canonical,
+  ratingValue,
+  reviewCount,
 }) => {
   return (
     <Helmet>
@@ -79,6 +83,19 @@ const MetaTags: FC<MetaProps> = ({
               brand: {
                 '@type': 'Brand',
                 name: brand,
+              },
+              review: {
+                '@type': 'Review',
+                reviewRating: {
+                  '@type': 'Rating',
+                  ratingValue: ratingValue,
+                  bestRating: '5',
+                },
+              },
+              aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: ratingValue,
+                reviewCount: reviewCount,
               },
               offers: {
                 '@type': 'Offer',

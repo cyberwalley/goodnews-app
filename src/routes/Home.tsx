@@ -11,6 +11,8 @@ import { useQuery } from '@tanstack/react-query';
 //import { getProducts } from '../api/products';
 import FeaturedCategory from '../components/sections/FeaturedCategory';
 import LoadingProduct from '../components/elements/LoadingProduct';
+import { SITE_NAME } from '../libs/constants';
+import SignUp from '../components/sections/SignUp';
 //import { getProducts } from '../../functions/contentful/getProducts';
 ///require('dotenv').config();
 
@@ -32,11 +34,13 @@ const Home = () => {
   return (
     <Layout>
       <MetaTags
-        title="Getdailyoffers.com"
+        title={`${SITE_NAME} | Get the Best Online Deals, Offers, Coupons and Shopping Tips`}
         description="Find Exclusive Discounts and Promotions from Top Retailers and Brands at Our One-Stop Destination for Savings"
         canonical={'/'}
       />
       <Hero />
+      {/* <SignUp /> */}
+      {/* <LogoImage title="Offers from your preferred Brands" /> */}
       {/* <Heading> Offers from your preferred Brands</Heading>
       <LogoImage /> */}
       <Campaign
