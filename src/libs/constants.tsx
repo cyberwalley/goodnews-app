@@ -1,4 +1,4 @@
-export const SITE_NAME = 'getcrazyoffers.com';
+export const SITE_NAME = 'GetCrazyOffers.com';
 export const ORG_NAME = 'Get Crazy Offers';
 export const SITE_URL = 'https://getdailyoffers.com';
 export const SITE_DESCRIPTION = 'Get Crazy Offers';
@@ -21,6 +21,6 @@ export const SITE_PHONE = '';
 export const SITE_ADDRESS = '';
 export const SITE_FAVICON = '/images/favicon.png';
 export const SITE_LOGO =
-  'https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600';
+  '../assets/images/getcrazyoffers-logo.svg';
 export const SITE_LOGO_TEXT = '/images/logo-text.png';
 export const GOOGLE_SITE_VERIFICATION = 'google-site-verification';

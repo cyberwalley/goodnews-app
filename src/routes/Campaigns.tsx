@@ -9,6 +9,7 @@ import { useQuery } from '@tanstack/react-query';
 import Layout from '../global/Layout';
 import NotFound from './NotFound';
 import MetaTags from '../global/MetaTags';
+import { SITE_NAME } from '../libs/constants';
 
 const Campaigns = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -38,7 +39,7 @@ const Campaigns = () => {
   return (
     <>
     <MetaTags
-        title={`${ campaign?.[0]?.title} - Getdailyoffers.com`}
+        title={`${ campaign?.[0]?.title} - ${SITE_NAME}`}
         description={campaign?.[0]?.subtitle}
         canonical={`/campaigns/${slug}`}
       />

@@ -5,7 +5,7 @@ import useContentful from '../api/useContentful';
 import Section from '../components/elements/Section';
 import Layout from '../global/Layout';
 import { useQuery } from '@tanstack/react-query';
-import { capitalize } from '../libs/utils';
+import { capitalize, cropText } from '../libs/utils';
 import ProductGrid from '../components/Product/ProductGrid';
 import NotFound from './NotFound';
 import { marked } from 'marked';
@@ -49,7 +49,7 @@ const Categories = () => {
     <Layout>
       <MetaTags
         title={`${capitalizedSlug} - Getdailyoffers.com`}
-        description={category?.[0]?.caption}
+        description={cropText(category?.[0]?.description, 167)}
         canonical={`/categories/${slug}`}
       />
       <header>

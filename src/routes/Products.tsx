@@ -11,8 +11,9 @@ import NotFound from './NotFound';
 import { marked } from 'marked';
 import Border from '../components/elements/Border';
 import NativeAds from '../libs/NativeAds';
-import { handleize } from '../libs/utils';
+import { formatDateRemoveTime, handleize } from '../libs/utils';
 import Spinner from '../components/elements/Spinner';
+import { cropText } from '../libs/utils';
 
 const Products = () => {
   const location = useLocation();
@@ -39,7 +40,7 @@ const Products = () => {
       </div>
     );
   }
-
+  
   /* @ts-ignore */
   const markedDescription = marked(product?.description);
   /* @ts-ignore */
@@ -51,7 +52,7 @@ const Products = () => {
         /* @ts-ignore */
         title={`${product?.name} - ${SITE_NAME}`}
         /* @ts-ignore */
-        description={product?.description}
+        description={cropText(product?.description, 167)}
         schemaVariant="product"
         /* @ts-ignore */
         image={product?.image1}
@@ -59,8 +60,11 @@ const Products = () => {
         brand={product?.brand}
         /* @ts-ignore */
         price={product?.price}
-        validUntil="2023-12-31"
+        validUntil={formatDateRemoveTime(product?.validUntil)}
         canonical={`/products/${slug}`}
+        currency={product?.currency}
+        ratingValue={product?.ratingValue}
+        reviewCount={product?.reviewCount}
       />
       <div className="pt-16 p-4 md:p-8">
         <div className="bg-white border-black border-2 shadow-3xl">
@@ -127,7 +131,7 @@ const Products = () => {
 
             {/* Image gallery */}
             <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-              <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
+              <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4 px-10">
                 <img
                   /*  @ts-ignore  */
                   src={product?.image1}
@@ -208,7 +212,7 @@ const Products = () => {
         </div>
         <Border>
           <div className="px-10 py-10">
-            <div className="text-black text-2xl"> You may also like these</div>
+            <h2 className="text-black text-2xl"> You may also like these</h2>
             <NativeAds category={product?.category} />
           </div>
         </Border>

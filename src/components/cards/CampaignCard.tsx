@@ -34,11 +34,11 @@ const CampaignCard: FC<CampaignCardProps> = ({
           />
         </div>
         <div className="p-4">
-          <h3 className="mt-6 text-sm text-gray-500">
+          <p className="mt-6 text-sm text-gray-500">
             <span className="absolute inset-0" />
             {vendor}
-          </h3>
-          <p className="text-base font-semibold text-gray-900 mt-2">{title}</p>
+          </p>
+          <h3 className="text-base font-semibold text-gray-900 mt-2">{title}</h3>
           <p className="text-sm text-gray-700 text-[14px] mt-2 overflow-hidden whitespace-wrap line-clamp-2">
             {subtitle}
           </p>
