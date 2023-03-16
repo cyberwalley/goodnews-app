@@ -46,6 +46,8 @@ const Products = () => {
   /* @ts-ignore */
   const handledCategory = handleize(product?.category);
   console.log(handledCategory, 'handledCategory');
+
+  const currency = product?.currency === 'USD' ? '$' : product?.currency;
   return (
     <Layout>
       <MetaTags
@@ -150,7 +152,7 @@ const Products = () => {
                 </h1>
                 <p className="text-3xl tracking-tight text-gray-900">
                   {/* @ts-ignore */}
-                  {product?.price}
+                  {`${currency}${product?.price}`}
                 </p>
                 <div className="mt-[40px]">
                   {/* @ts-ignore */}
@@ -164,13 +166,6 @@ const Products = () => {
                   >
                     Get offer
                   </a>
-                  {/*  <Button
-                    variant="secondary"
-                    width="full"
-                    onClick={LinkToReferral}
-                  >
-                    Get offer
-                  </Button> */}
                 </div>
                 <div className="text-gray-500 mt-2 text-sm text-center">
                   <p>

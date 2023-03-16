@@ -3,7 +3,6 @@ import ProductCard from '../cards/ProductCard';
 import Filters from '../elements/Filters';
 import Grid from '../elements/Grid';
 import Border from '../elements/Border';
-import Section from '../elements/Section';
 import LoadingProduct from '../elements/LoadingProduct';
 
 type productGriptType = { [key: string]: string };
@@ -39,6 +38,7 @@ const ProductGrid: FC<ProductGridProps> = ({
                   comparedAtPrice,
                   discount,
                   slug,
+                  currency,
                 }) => (
                   <ProductCard
                     key={id}
@@ -50,6 +50,7 @@ const ProductGrid: FC<ProductGridProps> = ({
                     comparedAtPrice={comparedAtPrice}
                     discount={discount}
                     slug={slug}
+                    currency={currency}
                   />
                 ),
               )}

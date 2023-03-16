@@ -5,7 +5,7 @@ import useContentful from '../api/useContentful';
 import Section from '../components/elements/Section';
 import Layout from '../global/Layout';
 import { useQuery } from '@tanstack/react-query';
-import { capitalize, cropText } from '../libs/utils';
+import { capitalize } from '../libs/utils';
 import ProductGrid from '../components/Product/ProductGrid';
 import NotFound from './NotFound';
 import { marked } from 'marked';
@@ -20,8 +20,6 @@ const Categories = () => {
   const slug = handle || location.state.slug;
   const capitalizedSlug = capitalize(slug).replace(/-/g, ' ');
 
-  console.log(capitalizedSlug, 'real -capitalizedSlug');
-
   const { data, isLoading } = useQuery({
     queryKey: ['Category List', capitalizedSlug],
     queryFn: () => getProductsByCategory(capitalizedSlug),
@@ -32,8 +30,6 @@ const Categories = () => {
     queryFn: () => getCategory(slug),
   });
 
-  console.log(category, 'New category');
-
   if (isCategoryLoading)
     return (
       <div className="text-black text-center mx-auto mt-[20vh] mb-0 h-[100vh]">
@@ -43,13 +39,13 @@ const Categories = () => {
 
   if (!category || category?.length === 0) return <NotFound />;
 
-  const markedDescription = marked.parse(category?.[0].description || null);
+  const markedDescription = marked.parse(category?.[0]?.description || null);
 
   return (
     <Layout>
       <MetaTags
         title={`${capitalizedSlug} - Getdailyoffers.com`}
-        description={cropText(category?.[0]?.description, 167)}
+        description={category?.[0]?.caption}
         canonical={`/categories/${slug}`}
       />
       <header>
@@ -66,12 +62,14 @@ const Categories = () => {
         <ProductGrid collection={data} loading={isLoading} />
       </Section>
       <Section>
-        <div className="bg-white border-2 shadow-3xl border-black text-black mt-20">
-          <div
-            className="py-[2rem] px-[2rem] text-sm"
-            dangerouslySetInnerHTML={{ __html: markedDescription }}
-          />
-        </div>
+        {markedDescription && (
+          <div className="bg-white border-2 shadow-3xl border-black text-black mt-20">
+            <div
+              className="py-[2rem] px-[2rem] text-sm"
+              dangerouslySetInnerHTML={{ __html: markedDescription }}
+            />
+          </div>
+        )}
       </Section>
     </Layout>
   );

@@ -13,6 +13,7 @@ interface ProductCardProps {
   discount?: string;
   createdAt?: string;
   slug?: string;
+  currency: string;
 }
 
 const ProductCard: FC<ProductCardProps> = ({
@@ -26,7 +27,9 @@ const ProductCard: FC<ProductCardProps> = ({
   discount,
   createdAt,
   slug,
+  currency,
 }) => {
+  const currencySign = currency === 'USD' ? '$' : currency;
 
   return (
     <Link to={`products/${slug}`} state={{ id, slug }}>
@@ -67,10 +70,12 @@ const ProductCard: FC<ProductCardProps> = ({
           </h3>
         </div>
         <div className="mt-2 flex items-center gap-2">
-          <p className="text-lg font-lg text-red-600">{price}</p>
-          <p className="text-sm font-sm text-gray-500 line-through">
-            {comparedAtPrice}
-          </p>
+          <p className="text-lg font-lg text-red-600">{`${currencySign}${price}`}</p>
+          {comparedAtPrice && (
+            <p className="text-sm font-sm text-gray-500 line-through">
+              {`${currencySign}${comparedAtPrice}`}
+            </p>
+          )}
         </div>
         <div className="mt-2">
           <Button
