@@ -40,7 +40,7 @@ const Products = () => {
       </div>
     );
   }
-  
+
   /* @ts-ignore */
   const markedDescription = marked(product?.description);
   /* @ts-ignore */
@@ -156,7 +156,10 @@ const Products = () => {
                   {/* @ts-ignore */}
                   <a
                     href={`${product?.referralUrl}`}
-                    type="button"
+                    /* @ts-ignore */
+                    rel="nofollow"
+                    /* @ts-ignore */
+                    target="_blank"
                     className="py-3 px-8 text-base w-full items-center justify-center text-center md:px-4  bg-rose-300 transition shadow-5px hover:shadow-none  inline-block whitespace-nowrap border-black text-black border-2 font-bold hover:bg-rose-400"
                   >
                     Get offer
