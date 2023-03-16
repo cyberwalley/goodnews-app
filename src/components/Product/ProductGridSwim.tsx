@@ -16,6 +16,7 @@ interface ProductGridSwimProps {
     discount: string;
     createdAt?: string;
     slug: string;
+    currency: string;
   }>;
 }
 
@@ -53,12 +54,14 @@ const ProductGridSwim: FC<ProductGridSwimProps> = ({ collection }) => {
                 discount,
                 createdAt,
                 slug,
+                currency
               }) => (
                 <div className="grid gap-2 snap-start w-72  bg-white min-h-[32rem]">
                   <ProductCard
                     key={id}
                     title={title}
                     price={price}
+                    currency={currency}
                     seller={seller}
                     id={id}
                     image={image1}

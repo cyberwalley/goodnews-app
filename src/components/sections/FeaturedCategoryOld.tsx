@@ -17,6 +17,7 @@ interface FeaturedCategoryProps {
     label: string;
     categoryTitle: string;
     image: string;
+    currency: string;
   }>;
 }
 
@@ -65,12 +66,14 @@ const FeaturedCategory: FC<FeaturedCategoryProps> = ({
                   seller,
                   publishedDate,
                   image,
+                  currency
                 }) => (
                   <div className="grid gap-2 snap-start w-72  bg-white min-h-[32rem]">
                     <ProductCard
                       key={id}
                       title={title}
                       price={price}
+                      currency={currency}
                       seller={seller}
                       id={id}
                       image={image}
