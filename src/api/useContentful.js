@@ -207,6 +207,26 @@ const useContentful = () => {
       console.error(error);
     }
   };
+  const getBlogPost = async slug => {
+    try {
+      const entry = await client.getEntries({
+        content_type: 'blogs',
+        select: 'fields',
+        limit: 1,
+        'fields.slug': slug,
+      });
+      const sanitizeEntry = entry.items.map(item => {
+        const id = item.sys.id;
+        return {
+          id,
+          ...item.fields,
+        };
+      });
+      return sanitizeEntry;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return {
     getProducts,
@@ -219,6 +239,7 @@ const useContentful = () => {
     getPage,
     getProductsByCampaign,
     getCampaign,
+    getBlogPost,
   };
 };
 

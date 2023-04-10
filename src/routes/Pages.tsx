@@ -9,6 +9,7 @@ import NotFound from './NotFound';
 import { marked } from 'marked';
 import MetaTags from '../global/MetaTags';
 import Spinner from '../components/elements/Spinner';
+import ContentArea from '../global/ContentArea';
 
 const Pages = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -47,11 +48,10 @@ const Pages = () => {
         </div>
       </header>
       <Section>
-        <div className="bg-white border-2 shadow-3xl border-black text-black">
-          <div
-            className="py-[4rem] px-[2rem]"
-            dangerouslySetInnerHTML={{ __html: markedContent }}
-          />
+        <div className="bg-white border-2 shadow-3xl border-black text-black py-[4rem] px-[2rem]">
+          <ContentArea>
+            <div dangerouslySetInnerHTML={{ __html: markedContent }}></div>
+          </ContentArea>
         </div>
         <script type="text/javascript">
           amzn_assoc_placement = "adunit0"; amzn_assoc_tracking_id =

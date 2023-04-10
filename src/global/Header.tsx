@@ -184,6 +184,7 @@ function classNames(...classes: string[]) {
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const { getMainMenuItems } = useContentful();
 
@@ -519,18 +520,51 @@ const Header = () => {
               <div className="ml-auto flex items-center">
                 {/* Search */}
                 <div className="flex lg:ml-6">
-                  <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
+                  <button
+                    onClick={() => setIsSearchOpen(() => !isSearchOpen)}
+                    className="p-2 text-gray-400 hover:text-gray-500"
+                  >
                     <span className="sr-only">Search</span>
                     <MagnifyingGlassIcon
                       className="h-6 w-6"
                       aria-hidden="true"
                     />
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </nav>
+        {isSearchOpen && (
+          <Transition
+            show={isSearchOpen}
+            as={Fragment}
+            enter="transition ease-out duration-200"
+            enterFrom="opacity-0 translate-y-1"
+            enterTo="opacity-100 translate-y-0"
+            leave="transition ease-in duration-150"
+            leaveFrom="opacity-100 translate-y-0"
+            leaveTo="opacity-0 translate-y-1"
+          >
+            <div className="px-10 py-10">
+              <label className="relative block">
+                <span className="sr-only">Search</span>
+                <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+                  <MagnifyingGlassIcon
+                    className="h-6 w-6 text-black"
+                    aria-hidden="true"
+                  />
+                </span>
+                <input
+                  className=" transition-all placeholder:italic text-black placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                  placeholder="Search for anything..."
+                  type="text"
+                  name="search"
+                />
+              </label>
+            </div>
+          </Transition>
+        )}
       </header>
     </div>
   );
