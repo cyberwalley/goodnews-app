@@ -10,8 +10,9 @@ import SocialMediaShare from '../global/SocialMediaShare';
 import useContentful from '../api/useContentful';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/elements/Spinner';
-import { cropText, handleize } from '../libs/utils';
+import { cropText, formatDateTime, handleize } from '../libs/utils';
 import NotFound from './NotFound';
+import { DiscussionEmbed } from 'disqus-react';
 
 /* const post = [
   {
@@ -78,7 +79,7 @@ const BlogPost = () => {
         title={`${post?.title} | ${SITE_NAME}`}
         /* @ts-ignore */
         description={cropText(post?.metaDescription, 167)}
-        canonical={`/${handledSubCategory}/${handle}`}
+        canonical={`/${handledSubCategory}/${handledMainCategory}/${handle}`}
       />
       <div className="pt-16 p-4 md:p-8">
         <div className="bg-white border-black border-2 shadow-3xl">
@@ -169,8 +170,8 @@ const BlogPost = () => {
                     <div>
                       <div className="relative flex items-center gap-x-4">
                         <img
-                          src={post?.author}
-                          alt=""
+                          src='/static/media/getcrazyoffers-logo.7acae2f806d925d6c1f4600a4140520b.svg'
+                          alt={post?.author}
                           className="h-10 w-10 rounded-full bg-gray-50"
                         />
                         <div className="text-sm leading-6">
@@ -182,7 +183,9 @@ const BlogPost = () => {
                         </div>
                       </div>
                       <div className="text-gray-500 text-[0.875em] mt-4 flex gap-2">
-                        <div>Apr 6, 2023 9:00 AM</div>
+                        <div>Apr 6, 2023 9:00 AM {post?.datePosted.toLocaleString()}</div>
+                        <div>•</div>
+                        <div>5 min read</div>
                       </div>
                     </div>
                     <div className="flex flex-row gap-x-4 md:gap-x-6 justify-center items-center">
@@ -191,14 +194,11 @@ const BlogPost = () => {
                   </div>
                 </header>
               </div>
-              <figure className="mx-auto mt-6 max-w-2xl sm:px-6 px-6 lg:max-w-7xl lg:px-8">
-                <img
-                  alt=""
-                  height="485"
-                  width="924"
-                  src="https://cdn.shopify.com/s/files/1/0070/7032/files/customer_20service_20skills.jpg?v=1680830715&amp;width=1024"
-                />
-              </figure>
+              {post?.imageUrl && (
+                <figure className="mx-auto mt-6 max-w-2xl sm:px-6 px-6 lg:max-w-7xl lg:px-8">
+                  <img alt={post?.title} height="485" width="924" src={post?.imageUrl} />
+                </figure>
+              )}
               <div className="mx-auto mt-6 max-w-2xl sm:px-6 px-6 lg:max-w-7xl lg:px-8">
                 <ContentArea>
                   {markedContent && (
@@ -210,6 +210,17 @@ const BlogPost = () => {
                 </ContentArea>
               </div>
             </article>
+            <div className="mx-auto mt-6 max-w-2xl sm:px-6 px-6 lg:max-w-7xl lg:px-8">
+              <DiscussionEmbed
+                shortname="getcrazyoffers"
+                config={{
+                  url: window.location.href,
+                  identifier: post?.id,
+                  title: post?.title,
+                  language: 'us_EN',
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
