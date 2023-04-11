@@ -69,6 +69,19 @@ const NativeAds: FC<NativeAdsProps> = ({ category }) => {
         ></script>
       </>
     ),
+    Books: (
+      /* @ts-ignore */
+      <iframe
+        title="Books"
+        src="//ws-na.amazon-adsystem.com/widgets/cm?o=15&p=48&l=ur1&category=books&banner=1AETVVQQQQA763NWM8G2&f=ifr&linkID=63ab9e8508dbec5e6efbe18f98fa6203&t=getcrazyoff02-20&tracking_id=getcrazyoff02-20"
+        width="728"
+        height="90"
+        scrolling="no"
+        style={{ border: 'none' }}
+        frameBorder="0"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
+      ></iframe>
+    ),
   };
 
   /* @ts-ignore */

@@ -20,3 +20,14 @@ export function cropText(text: string, count: number) {
 export function formatDateRemoveTime(text: string | undefined) {
   return text?.split('T')[0];
 }
+
+export function formatDateTime(text: any): string {
+  const date = new Date(text);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+  });
+}

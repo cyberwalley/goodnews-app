@@ -14,6 +14,8 @@ import NativeAds from '../libs/NativeAds';
 import { formatDateRemoveTime, handleize } from '../libs/utils';
 import Spinner from '../components/elements/Spinner';
 import { cropText } from '../libs/utils';
+import ContentArea from '../global/ContentArea';
+import SocialMediaShare from '../global/SocialMediaShare';
 
 const Products = () => {
   const location = useLocation();
@@ -132,8 +134,8 @@ const Products = () => {
             </nav>
 
             {/* Image gallery */}
-            <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-              <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4 px-10">
+            <div className="mx-auto mt-6 max-w-2xl sm:px-6 px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+              <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
                 <img
                   /*  @ts-ignore  */
                   src={product?.image1}
@@ -145,7 +147,7 @@ const Products = () => {
                   className="w-full object-cover object-center"
                 />
               </div>
-              <div className="lg:pr-8 p-8">
+              <div className="lg:pr-8">
                 <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-4 mt-4">
                   {/* @ts-ignore */}
                   {product?.name}
@@ -177,32 +179,21 @@ const Products = () => {
                   {/* Description and details */}
                   <div>
                     <h3 className="sr-only">Description</h3>
-
                     <div className="space-y-6">
-                      <div
-                        className="text-base text-gray-900"
-                        dangerouslySetInnerHTML={{ __html: markedDescription }}
-                      />
+                      <ContentArea>
+                        <div
+                          className="text-base text-gray-900"
+                          dangerouslySetInnerHTML={{
+                            __html: markedDescription,
+                          }}
+                        />
+                      </ContentArea>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex flex-row gap-x-4 md:gap-x-6 justify-center mt-10">
-                  <Link
-                    to={SITE_TWITTER_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="px-3 py-3 bg-gray-200 rounded-full"
-                  >
-                    <img
-                      className="h-3 w-3 md:h-auto md:w-auto"
-                      src="https://cdn.shopify.com/shopifycloud/linkpop/assets/twitter-icon.bcc917da.svg"
-                      alt="Twitter"
-                      loading="lazy"
-                      width="18"
-                      height="18"
-                    />
-                  </Link>
+                <div className="flex flex-row gap-x-4 md:gap-x-6 justify-center mt-10 items-center">
+                  {/* <SocialMediaShare /> */}
                 </div>
               </div>
             </div>
