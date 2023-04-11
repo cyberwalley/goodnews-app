@@ -11,6 +11,7 @@ import NotFound from './NotFound';
 import { marked } from 'marked';
 import Spinner from '../components/elements/Spinner';
 import MetaTags from '../global/MetaTags';
+import ContentArea from '../global/ContentArea';
 
 const Categories = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -62,14 +63,18 @@ const Categories = () => {
         <ProductGrid collection={data} loading={isLoading} />
       </Section>
       <Section>
-        {markedDescription && (
-          <div className="bg-white border-2 shadow-3xl border-black text-black mt-20">
-            <div
-              className="py-[2rem] px-[2rem] text-sm"
-              dangerouslySetInnerHTML={{ __html: markedDescription }}
-            />
+        <div className="bg-white border-2 shadow-3xl border-black text-black mt-20">
+          <div className="mx-auto mt-6 max-w-2xl sm:px-6 px-6 lg:max-w-7xl lg:px-8">
+            <ContentArea>
+              {markedDescription && (
+                <div
+                  className="py-[2rem] px-[2rem] text-sm"
+                  dangerouslySetInnerHTML={{ __html: markedDescription }}
+                />
+              )}
+            </ContentArea>
           </div>
-        )}
+        </div>
       </Section>
     </Layout>
   );

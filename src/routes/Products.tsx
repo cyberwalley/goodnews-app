@@ -193,7 +193,7 @@ const Products = () => {
                 </div>
 
                 <div className="flex flex-row gap-x-4 md:gap-x-6 justify-center mt-10 items-center">
-                  <SocialMediaShare />
+                  {/* <SocialMediaShare /> */}
                 </div>
               </div>
             </div>

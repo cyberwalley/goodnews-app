@@ -10,7 +10,12 @@ import SocialMediaShare from '../global/SocialMediaShare';
 import useContentful from '../api/useContentful';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/elements/Spinner';
-import { cropText, formatDateTime, handleize } from '../libs/utils';
+import {
+  cropText,
+  formatDateRemoveTime,
+  formatDateTime,
+  handleize,
+} from '../libs/utils';
 import NotFound from './NotFound';
 import { DiscussionEmbed } from 'disqus-react';
 
@@ -70,16 +75,13 @@ const BlogPost = () => {
   /* @ts-ignore */
   const handledMainCategory = handleize(post?.category);
 
-  /* @ts-ignore */
-  const handledSubCategory = handleize(post?.subCategory);
-
   return (
     <Layout>
       <MetaTags
         title={`${post?.title} | ${SITE_NAME}`}
         /* @ts-ignore */
         description={cropText(post?.metaDescription, 167)}
-        canonical={`/${handledSubCategory}/${handledMainCategory}/${handle}`}
+        canonical={`/${handledMainCategory}/${handle}`}
       />
       <div className="pt-16 p-4 md:p-8">
         <div className="bg-white border-black border-2 shadow-3xl">
@@ -129,31 +131,6 @@ const BlogPost = () => {
                       >
                         {post?.category}
                       </Link>
-                      <svg
-                        width={16}
-                        height={20}
-                        viewBox="0 0 16 20"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        className="h-5 w-4 text-gray-300"
-                      >
-                        <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                      </svg>
-                    </div>
-                  </li>
-                  <li
-                    itemProp="itemListElement"
-                    itemScope
-                    itemType="https://schema.org/ListItem"
-                  >
-                    <div className="flex items-center">
-                      <Link
-                        to={`/${handledRootCategory}/${handledSubCategory}`}
-                        className="mr-2 text-sm font-medium text-gray-900"
-                      >
-                        {post?.subCategory}
-                      </Link>
                     </div>
                   </li>
                 </ol>
@@ -170,7 +147,7 @@ const BlogPost = () => {
                     <div>
                       <div className="relative flex items-center gap-x-4">
                         <img
-                          src='/static/media/getcrazyoffers-logo.7acae2f806d925d6c1f4600a4140520b.svg'
+                          src="/static/media/getcrazyoffers-logo.7acae2f806d925d6c1f4600a4140520b.svg"
                           alt={post?.author}
                           className="h-10 w-10 rounded-full bg-gray-50"
                         />
@@ -183,20 +160,28 @@ const BlogPost = () => {
                         </div>
                       </div>
                       <div className="text-gray-500 text-[0.875em] mt-4 flex gap-2">
-                        <div>Apr 6, 2023 9:00 AM {post?.datePosted.toLocaleString()}</div>
+                        <div>{formatDateTime(post?.datePosted)}</div>
                         <div>•</div>
-                        <div>5 min read</div>
+                        <div>{post?.readTime} read</div>
                       </div>
                     </div>
                     <div className="flex flex-row gap-x-4 md:gap-x-6 justify-center items-center">
-                      <SocialMediaShare />
+                      <SocialMediaShare
+                        url={window.location.href}
+                        title={post?.title}
+                      />
                     </div>
                   </div>
                 </header>
               </div>
               {post?.imageUrl && (
                 <figure className="mx-auto mt-6 max-w-2xl sm:px-6 px-6 lg:max-w-7xl lg:px-8">
-                  <img alt={post?.title} height="485" width="924" src={post?.imageUrl} />
+                  <img
+                    alt={post?.title}
+                    height="485"
+                    width="924"
+                    src={post?.imageUrl}
+                  />
                 </figure>
               )}
               <div className="mx-auto mt-6 max-w-2xl sm:px-6 px-6 lg:max-w-7xl lg:px-8">
@@ -217,7 +202,7 @@ const BlogPost = () => {
                   url: window.location.href,
                   identifier: post?.id,
                   title: post?.title,
-                  language: 'us_EN',
+                  language: 'en_US',
                 }}
               />
             </div>
