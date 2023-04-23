@@ -26,7 +26,7 @@ const CampaignCard: FC<CampaignCardProps> = ({
   return (
     <Link to={`campaigns/${slug}`} state={{ id, slug }}>
       <div key={id} className="group relative border-black border-[1px] mb-10">
-        <div className="relative h-80 w-full overflow-hidden bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+        <div className="relative h-36 w-full overflow-hidden bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-36 lg:aspect-w-1 lg:aspect-h-1">
           <img
             src={imageSrc}
             alt={title}
