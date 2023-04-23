@@ -8,6 +8,7 @@ import {
   SITE_FACEBOOK_URL,
   SITE_INSTAGRAM_URL,
   ORG_NAME,
+  SITE_LOCALE,
 } from '../libs/constants';
 
 interface MetaProps {
@@ -64,7 +65,7 @@ const MetaTags: FC<MetaProps> = ({
       <meta property="og:image:height" content="630" />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:locale" content="en_US" />
+      <meta property="og:locale" content={SITE_LOCALE} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />

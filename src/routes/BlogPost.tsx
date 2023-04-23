@@ -82,6 +82,8 @@ const BlogPost = () => {
         /* @ts-ignore */
         description={cropText(post?.metaDescription, 167)}
         canonical={`/${handledMainCategory}/${handle}`}
+        image={post?.imageUrl}
+        pageType="article"
       />
       <div className="pt-16 p-4 md:p-8">
         <div className="bg-white border-black border-2 shadow-3xl">
@@ -148,7 +150,8 @@ const BlogPost = () => {
                       <div className="relative flex items-center gap-x-4">
                         <img
                           src="/static/media/getcrazyoffers-logo.7acae2f806d925d6c1f4600a4140520b.svg"
-                          alt={post?.author}
+                          alt={`${post?.author}'s picture}`}
+                          title={`${post?.author}'s picture`}
                           className="h-10 w-10 rounded-full bg-gray-50"
                         />
                         <div className="text-sm leading-6">
@@ -169,6 +172,7 @@ const BlogPost = () => {
                       <SocialMediaShare
                         url={window.location.href}
                         title={post?.title}
+                        imageUrl={post?.imageUrl}
                       />
                     </div>
                   </div>

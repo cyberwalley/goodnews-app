@@ -26,12 +26,12 @@ const NotFound = () => {
                 </Link>
               </li>
               <li className="text-gray-600">
-                <Link to="/about" className="text-blue-600 hover:underline">
+                <Link to="/pages/about" className="text-blue-600 hover:underline">
                   About Us
                 </Link>
               </li>
               <li className="text-gray-600">
-                <Link to="/contact" className="text-blue-600 hover:underline">
+                <Link to="/pages/contact" className="text-blue-600 hover:underline">
                   Contact Us
                 </Link>
               </li>

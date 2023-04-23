@@ -10,6 +10,8 @@ import ProductList from './ProductList';
 import Products from './Products';
 import BlogPost from './BlogPost';
 import Blog from './Blog';
+import BlogCategory from './BlogCategory';
+import BlogSubCategory from './BlogSubCategory';
 
 const Router = () => {
   return (
@@ -28,8 +30,12 @@ const Router = () => {
       />
       <Route path="/pages/:handle" element={<Pages />} />
       <Route path="/buying-guides" element={<Blog />} />
-      <Route path="/buying-guides/:handle" element={<Blog />} />
-      <Route path="/buying-guides/:handle/:handle" element={<BlogPost />} />
+      <Route path="/buying-guides/:handle" element={<BlogCategory />} />
+      <Route path="/buying-guides/:handle/:handle" element={<BlogSubCategory />} />
+      <Route
+        path="/buying-guides/:handle/:handle/:handle"
+        element={<BlogPost />}
+      />
       <Route path="/categories" element={<CategoryList />} />
       <Route path="/products" element={<CategoryList />} />
       <Route path="/products/all" element={<ProductList />} />

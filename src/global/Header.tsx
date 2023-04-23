@@ -14,167 +14,175 @@ import { SITE_NAME } from '../libs/constants';
 import { Link } from 'react-router-dom';
 import useContentful from '../api/useContentful';
 
-const parentMenuItems = [
-  {
-    id: 'Offers',
-    name: 'Offers',
-  },
-  {
-    id: 'Coupons',
-    name: 'Coupons',
-  },
-  {
-    id: 'Stores',
-    name: 'Stores',
-  },
-
-  {
-    id: 'Saving Tips',
-    name: 'Saving Tips',
-  },
-];
-
-const childMenuItems = [
-  {
-    id: 'Category',
-    name: 'Shopy By Category',
-  },
-];
-
-const childMenuItems2 = [
-  {
-    id: 'Campaigns',
-    name: 'Campaigns',
-  },
-];
-
 const navigation = {
   categories: [
     {
-      id: 'women',
-      name: 'Women',
+      id: 'offers',
+      name: 'Offers',
       featured: [
         {
-          name: 'New Arrivals',
-          href: '#',
+          name: 'ads-container-1',
           imageSrc:
             'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
-          imageAlt:
-            'Models sitting back to back, wearing Basic Tee in black and bone.',
+          ads: (
+            <iframe
+              src="//ws-na.amazon-adsystem.com/widgets/cm?o=15&p=12&l=ur1&category=sportsoutdoors&banner=0B0Q3MFP6BNN3KJM6ZR2&f=ifr&linkID=45d053cc7cfe9eed9bad7f4a6b7049b4&t=gcoffersca-20&tracking_id=gcoffersca-20"
+              width="300"
+              height="250"
+              scrolling="no"
+              marginWidth={0}
+              style={{ border: 'none' }}
+              frameBorder={0}
+              sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
+            ></iframe>
+          ),
         },
         {
-          name: 'Basic Tees',
-          href: '#',
+          name: 'ads-container-2',
           imageSrc:
             'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
-          imageAlt:
-            'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
+          ads: (
+            <iframe
+              src="//ws-na.amazon-adsystem.com/widgets/cm?o=15&p=12&l=ur1&category=books&banner=1CF5A619J93FZ5Z2EQ82&f=ifr&linkID=ca2d1e0d3878d898ee2139932a414d73&t=gcoffersca-20&tracking_id=gcoffersca-20"
+              width="300"
+              height="250"
+              scrolling="no"
+              marginWidth={0}
+              style={{ border: 'none' }}
+              frameBorder={0}
+              sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
+            ></iframe>
+          ),
         },
       ],
       sections: [
         {
-          id: 'clothing',
-          name: 'Clothing',
+          id: 'shop-by-category',
+          name: 'Shop by category',
           items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Dresses', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Denim', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
+            { name: 'Beauty', href: '/categories/beauty' },
+            { name: 'Baby', href: '/categories/baby' },
+            { name: 'Home & Kitchen', href: '/categories/home-and-kitchen' },
+            { name: 'Electronic', href: '/categories/electronics' },
+            { name: 'Tools', href: '/categories/tools' },
+            { name: 'Office', href: '/categories/office' },
+            { name: 'Computers', href: '/categories/computers' },
             { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
+            { name: 'Browse All', href: '/categories' },
           ],
         },
         {
-          id: 'accessories',
-          name: 'Accessories',
+          id: 'shop-by-campaigns',
+          name: 'Shop by campaigns',
           items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Significant Other', href: '#' },
+            { name: 'Going viral', href: '/campaigns/going-viral' },
+            {
+              name: "Women's history month",
+              href: '/campaigns/women-history-month',
+            },
+            { name: 'Back to school', href: '/campaigns/back-to-school' },
+            { name: 'Black Friday', href: '/campaigns/black-friday' },
+            { name: 'Cyber Monday', href: '/campaigns/cyber-monday' },
           ],
         },
       ],
     },
     {
-      id: 'men',
-      name: 'Men',
+      id: 'coupons',
+      name: 'Coupons',
       featured: [
         {
           name: 'New Arrivals',
           href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-          imageAlt:
-            'Drawstring top with elastic loop closure and textured interior padding.',
+          ads: '',
         },
         {
           name: 'Artwork Tees',
           href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
-          imageAlt:
-            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
+          ads: '',
         },
       ],
       sections: [
         {
-          id: 'clothing',
-          name: 'Clothing',
+          id: 'all-coupons',
+          name: 'Top Coupons',
+          items: [{ name: 'Amazon', href: '/coupons/amazon' }],
+        },
+      ],
+    },
+    {
+      id: 'stores',
+      name: 'Stores',
+      featured: [
+        {
+          name: 'ads1',
+          href: '#',
+          ads: '',
+        },
+        {
+          name: 'ads2',
+          href: '#',
+          ads: '',
+        },
+      ],
+      sections: [
+        {
+          id: 'stores',
+          name: 'Stores',
           items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
+            { name: 'Amazon', href: '/stores/amazon' },
+            { name: 'Jumia', href: '/stores/amazon' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'buying-guides',
+      name: 'Buying Guides',
+      featured: [
+        {
+          name: 'ads1',
+          href: '#',
+          ads: '',
+        },
+        {
+          name: 'ads2',
+          href: '#',
+          ads: '',
+        },
+      ],
+      sections: [
+        {
+          id: 'computing',
+          name: 'Computing',
+          items: [
+            { name: 'Laptops', href: '/buying-guides/laptops' },
+            { name: 'Desktops', href: '/buying-guides/desktops' },
           ],
         },
         {
-          id: 'accessories',
-          name: 'Accessories',
+          id: 'mobile',
+          name: 'Mobile',
           items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
+            { name: 'Phones', href: '/buying-guides/phones' },
+            { name: 'Tablets', href: '/buying-guides/tablets' },
+            { name: 'Smart watches', href: '/buying-guides/smart-watches' },
           ],
         },
         {
-          id: 'brands',
-          name: 'Brands',
+          id: 'gaming-consoles',
+          name: 'Gaming consoles',
           items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
+            { name: 'XBox', href: '/buying-guides/xbox' },
+            { name: 'PS4', href: '/buying-guides/PS' },
           ],
         },
       ],
     },
   ],
   pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
+    { name: 'About us', href: '/pages/about' },
+    { name: 'Policies', href: '/pages/policies' },
   ],
 };
 
@@ -236,7 +244,7 @@ const Header = () => {
                 <Tab.Group as="div" className="mt-2">
                   <div className="border-b border-gray-200">
                     <Tab.List className="-mb-px flex space-x-8 px-4">
-                      {parentMenuItems.map(category => (
+                      {navigation.categories.map(category => (
                         <Tab
                           key={category.name}
                           className={({ selected }) =>
@@ -265,26 +273,11 @@ const Header = () => {
                               key={item.name}
                               className="group relative text-sm"
                             >
-                              <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                <img
-                                  src={item.imageSrc}
-                                  alt={item.imageAlt}
-                                  className="object-cover object-center"
-                                />
-                              </div>
-                              <a
-                                href={item.href}
-                                className="mt-6 block font-medium text-gray-900"
-                              >
-                                <span
-                                  className="absolute inset-0 z-10"
-                                  aria-hidden="true"
-                                />
-                                {item.name}
-                              </a>
-                              <p aria-hidden="true" className="mt-1">
-                                Shop now
-                              </p>
+                              {item.ads && (
+                                <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                  {item.ads}
+                                </div>
+                              )}
                             </div>
                           ))}
                         </div>
@@ -332,7 +325,7 @@ const Header = () => {
                   ))}
                 </div>
 
-                <div className="space-y-6 border-t border-gray-200 py-6 px-4">
+                {/* <div className="space-y-6 border-t border-gray-200 py-6 px-4">
                   <div className="flow-root">
                     <a
                       href="#"
@@ -349,9 +342,9 @@ const Header = () => {
                       Create account
                     </a>
                   </div>
-                </div>
+                </div> */}
 
-                <div className="border-t border-gray-200 py-6 px-4">
+                {/* <div className="border-t border-gray-200 py-6 px-4">
                   <a href="#" className="-m-2 flex items-center p-2">
                     <img
                       src="https://tailwindui.com/img/flags/flag-canada.svg"
@@ -363,14 +356,17 @@ const Header = () => {
                     </span>
                     <span className="sr-only">, change currency</span>
                   </a>
-                </div>
+                </div> */}
               </Dialog.Panel>
             </Transition.Child>
           </div>
         </Dialog>
       </Transition.Root>
-
+      {/* desktop */}
       <header className="relative bg-white">
+        <p className="flex h-10 items-center justify-center bg-black px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+          Get free delivery on orders over $100
+        </p>
         <nav
           aria-label="Top"
           className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
@@ -390,14 +386,19 @@ const Header = () => {
               <div className="ml-4 flex lg:ml-0">
                 <Link to={'/'}>
                   <span className="sr-only">Your Company</span>
-                  <img className="h-8 w-auto" src={Logo} alt={SITE_NAME} />
+                  <img
+                    className="h-8 w-auto"
+                    src={Logo}
+                    alt={SITE_NAME}
+                    title={`${SITE_NAME}'s logo`}
+                  />
                 </Link>
               </div>
 
               {/* Flyout menus */}
               <Popover.Group className="hidden lg:block lg:self-stretch ml-auto">
                 <div className="flex h-full space-x-8">
-                  {parentMenuItems.map(category => (
+                  {navigation.categories.map(category => (
                     <Popover key={category.name} className="flex">
                       {({ open }) => (
                         <>
@@ -434,19 +435,22 @@ const Header = () => {
                                 <div className="mx-auto max-w-7xl px-8">
                                   <div className="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
                                     <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                                      {/* {menuByCategory?.map(item => (
+                                      {category.featured.map(item => (
                                         <div
                                           key={item.name}
                                           className="group relative text-base sm:text-sm"
                                         >
+                                           {item.ads && (
                                           <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                            <img
+                                            {/*  <img
                                               src={item.imageSrc}
                                               alt={item.imageAlt}
                                               className="object-cover object-center"
-                                            />
+                                            /> */}
+                                            {item.ads}
                                           </div>
-                                          <a
+                                           )}
+                                          {/*  <a
                                             href={item.href}
                                             className="mt-6 block font-medium text-gray-900"
                                           >
@@ -461,36 +465,38 @@ const Header = () => {
                                             className="mt-1"
                                           >
                                             Shop now
-                                          </p>
+                                          </p> */}
                                         </div>
-                                      ))} */}
+                                          
+                                      ))}
                                     </div>
                                     <div className="row-start-1 grid grid-cols-3 gap-y-10 gap-x-8 text-sm">
-                                      {childMenuItems?.map(({ id, name }) => (
-                                        <div key={id}>
+                                      {category.sections.map(section => (
+                                        <div key={section.name}>
                                           <p
-                                            id={`${name}-heading`}
+                                            id={`${section.name}-heading`}
                                             className="font-medium text-gray-900"
                                           >
-                                            {name}
+                                            {section.name}
                                           </p>
                                           <ul
                                             role="list"
-                                            aria-labelledby={`${name}-heading`}
+                                            aria-labelledby={`${section.name}-heading`}
                                             className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
                                           >
-                                            {menuByCategory?.map(
-                                              ({ id, title, slug }) => (
-                                                <li key={id} className="flex">
-                                                  <Link
-                                                    to={`categories/${slug}`}
-                                                    className="hover:text-gray-800"
-                                                  >
-                                                    {title}
-                                                  </Link>
-                                                </li>
-                                              ),
-                                            )}
+                                            {section.items.map(item => (
+                                              <li
+                                                key={item.name}
+                                                className="flex"
+                                              >
+                                                <Link
+                                                  to={item.href}
+                                                  className="hover:text-gray-800"
+                                                >
+                                                  {item.name}
+                                                </Link>
+                                              </li>
+                                            ))}
                                           </ul>
                                         </div>
                                       ))}

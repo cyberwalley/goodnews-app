@@ -41,7 +41,7 @@ const Home = () => {
       <Hero />
       {/* <SignUp /> */}
       {/* <LogoImage title="Offers from your preferred Brands" /> */}
-      {/* <Heading> Offers from your preferred Brands</Heading>
+{/*    <Heading> Offers from your preferred Brands</Heading>
       <LogoImage /> */}
       <Campaign
         heading="Trending deals"

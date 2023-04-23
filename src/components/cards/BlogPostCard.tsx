@@ -9,6 +9,8 @@ interface ProductGridProps {
   id: string;
   title: string;
   category: string;
+  rootCategory: string;
+  subCategory: string;
   datePosted: string;
   content: string;
   imageUrl: string;
@@ -21,6 +23,8 @@ const BlogPostCard = ({
   datePosted,
   title,
   category,
+  rootCategory,
+  subCategory,
   content,
   imageUrl,
   slug,
@@ -30,13 +34,17 @@ const BlogPostCard = ({
   if (isLoading) return <LoadingProduct />;
   console.log(handle, 'handle');
   //const [id, datePosted, title, category, content, imageUrl, slug] = post;
+  const handleizedCategory = handleize(category);
+  const handleizedSubCategory = handleize(subCategory);
+  const handleizedRootCategory = handleize(rootCategory);
 
   return (
-    <article
-      key={id}
-      className="flex max-w-xl flex-col items-start justify-between"
-    >
-      <Link to={`${slug}`} state={{ id, slug }} key={id}>
+    <article key={id} className="flex max-w-xl flex-col justify-between">
+      <Link
+        to={`/${handleizedRootCategory}/${handleizedCategory}/${handleizedSubCategory}/${slug}`}
+        state={{ id, slug }}
+        key={id}
+      >
         <img
           src={imageUrl}
           alt={title}
@@ -49,18 +57,39 @@ const BlogPostCard = ({
         <time dateTime={datePosted} className="text-gray-500">
           {formatDateTime(datePosted)}
         </time>
-        {handle !== handleize(category) && (
+        {handle === handleizedCategory && (
+          <>
+            <Link
+              to={`/${handleize(rootCategory)}/${handleize(category)}`}
+              className="relative z-10 rounded-full bg-gray-50 py-1.5 px-3 font-medium text-gray-600 hover:bg-gray-100"
+            >
+              {category}
+            </Link>
+            <Link
+              to={`/${handleize(rootCategory)}/${handleize(category)}/${handleize(subCategory)}`}
+              className="relative z-10 rounded-full bg-gray-50 py-1.5 px-3 font-medium text-gray-600 hover:bg-gray-100"
+            >
+              {subCategory}
+            </Link>
+          </>
+        )}
+
+        {handle === handleizedSubCategory && (
           <Link
-            to={`/${handleize(category)}`}
+            to={`/${handleize(rootCategory)}/${handleize(category)}/${handleize(subCategory)}`}
             className="relative z-10 rounded-full bg-gray-50 py-1.5 px-3 font-medium text-gray-600 hover:bg-gray-100"
           >
-            {category}
+            {subCategory}
           </Link>
         )}
       </div>
       <div className="group relative">
         <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-          <Link to={`${slug}`} state={{ id, slug }} key={id}>
+          <Link
+            to={`/${handleizedRootCategory}/${handleizedCategory}/${handleizedSubCategory}/${slug}`}
+            state={{ id, slug }}
+            key={id}
+          >
             <span className="absolute inset-0" />
             {title}
           </Link>
