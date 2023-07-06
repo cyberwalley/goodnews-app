@@ -3,16 +3,15 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import ContentArea from '../global/ContentArea';
 import Layout from '../global/Layout';
 import MetaTags from '../global/MetaTags';
-import { SITE_NAME, SITE_TWITTER_URL } from '../libs/constants';
+import { SITE_NAME } from '../libs/constants';
 import { marked } from 'marked';
-import Section from '../components/elements/Section';
 import SocialMediaShare from '../global/SocialMediaShare';
 import useContentful from '../api/useContentful';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/elements/Spinner';
 import {
   cropText,
-  formatDateRemoveTime,
+  estimatedReadingTime,
   formatDateTime,
   handleize,
 } from '../libs/utils';
@@ -74,6 +73,8 @@ const BlogPost = () => {
 
   /* @ts-ignore */
   const handledMainCategory = handleize(post?.category);
+
+  const readTime = estimatedReadingTime(markedContent);
 
   return (
     <Layout>
@@ -165,7 +166,7 @@ const BlogPost = () => {
                       <div className="text-gray-500 text-[0.875em] mt-4 flex gap-2">
                         <div>{formatDateTime(post?.datePosted)}</div>
                         <div>•</div>
-                        <div>{post?.readTime} read</div>
+                        <div>{readTime}</div>
                       </div>
                     </div>
                     <div className="flex flex-row gap-x-4 md:gap-x-6 justify-center items-center">
@@ -183,7 +184,7 @@ const BlogPost = () => {
                   <img
                     alt={post?.title}
                     height="485"
-                    width="924"
+                    width="1200"
                     src={post?.imageUrl}
                   />
                 </figure>
