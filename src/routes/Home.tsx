@@ -13,6 +13,8 @@ import FeaturedCategory from '../components/sections/FeaturedCategory';
 import LoadingProduct from '../components/elements/LoadingProduct';
 import { SITE_NAME } from '../libs/constants';
 import SignUp from '../components/sections/SignUp';
+import BlogSection from '../components/sections/BlogSections/BlogSection';
+import Accordion from '../components/sections/Accordion';
 //import { getProducts } from '../../functions/contentful/getProducts';
 ///require('dotenv').config();
 
@@ -41,8 +43,11 @@ const Home = () => {
       <Hero />
       {/* <SignUp /> */}
       {/* <LogoImage title="Offers from your preferred Brands" /> */}
-{/*    <Heading> Offers from your preferred Brands</Heading>
+      {/*    <Heading> Offers from your preferred Brands</Heading>
       <LogoImage /> */}
+
+      <BlogSection />
+
       <Campaign
         heading="Trending deals"
         campaign={campaigns}
@@ -78,6 +83,7 @@ const Home = () => {
           image="https://cdn.shopify.com/shopifycloud/shopify_dev/assets/home/hero-1-tablet-2x-604df177725e4b9aba5dc31e8c50a47a4937c540dcfed8a3c84868c94fb902fe.png"
         />
       </div> */}
+     {/*  <Accordion /> */}
     </Layout>
   );
 };

@@ -156,25 +156,25 @@ const navigation = {
           id: 'computing',
           name: 'Computing',
           items: [
-            { name: 'Laptops', href: '/buying-guides/laptops' },
-            { name: 'Desktops', href: '/buying-guides/desktops' },
+            { name: 'Laptops', href: '/buying-guides/computing/laptops' },
+            { name: 'Desktops', href: '/buying-guides/computing/desktops' },
           ],
         },
         {
           id: 'mobile',
           name: 'Mobile',
           items: [
-            { name: 'Phones', href: '/buying-guides/phones' },
-            { name: 'Tablets', href: '/buying-guides/tablets' },
-            { name: 'Smart watches', href: '/buying-guides/smart-watches' },
+            { name: 'Phones', href: '/buying-guides/mobile/phones' },
+            { name: 'Tablets', href: '/buying-guides/mobile/tablets' },
+            { name: 'Smart watches', href: '/buying-guides/mobile/smart-watches' },
           ],
         },
         {
           id: 'gaming-consoles',
-          name: 'Gaming consoles',
+          name: 'Gaming',
           items: [
-            { name: 'XBox', href: '/buying-guides/xbox' },
-            { name: 'PS4', href: '/buying-guides/PS' },
+            { name: 'XBox', href: '/buying-guides/gaming/xbox' },
+            { name: 'PS4', href: '/buying-guides/gaming/PS' },
           ],
         },
       ],
